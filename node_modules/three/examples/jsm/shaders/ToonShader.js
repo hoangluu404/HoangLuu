@@ -1,9 +1,7 @@
-import {
-	Color,
-	Vector3
-} from "../../../build/three.module.js";
-
 /**
+ * @author mrdoob / http://mrdoob.com/
+ * @author alteredq / http://alteredqualia.com/
+ *
  * Currently contains:
  *
  *	toon1
@@ -11,6 +9,11 @@ import {
  *	hatching
  *	dotted
  */
+
+import {
+	Color,
+	Vector3
+} from "../../../build/three.module.js";
 
 var ToonShader1 = {
 

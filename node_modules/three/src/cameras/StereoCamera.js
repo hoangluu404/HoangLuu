@@ -5,6 +5,10 @@ import { PerspectiveCamera } from './PerspectiveCamera.js';
 const _eyeRight = new Matrix4();
 const _eyeLeft = new Matrix4();
 
+/**
+ * @author mrdoob / http://mrdoob.com/
+ */
+
 function StereoCamera() {
 
 	this.type = 'StereoCamera';

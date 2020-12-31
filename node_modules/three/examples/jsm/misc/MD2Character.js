@@ -1,3 +1,7 @@
+/**
+ * @author alteredq / http://alteredqualia.com/
+ */
+
 import {
 	AnimationMixer,
 	Box3,

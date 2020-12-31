@@ -1,18 +1,7 @@
-import {
-	ClampToEdgeWrapping,
-	DataTexture,
-	DataUtils,
-	FloatType,
-	HalfFloatType,
-	LinearFilter,
-	NearestFilter,
-	RGBAFormat,
-	UVMapping,
-	UniformsLib
-} from "../../../build/three.module.js";
-
 /**
  * Uniforms library for RectAreaLight shared webgl shaders
+ * @author abelnation
+ * @author WestLangley / http://github.com/WestLangley
  *
  * NOTE: This is a temporary location for the BRDF approximation texture data
  *       based off of Eric Heitz's work (see citation below).  BRDF data for
@@ -23,6 +12,18 @@ import {
  *
  * TODO: figure out a way to compress the LTC BRDF data
  */
+
+import {
+	ClampToEdgeWrapping,
+	DataTexture,
+	FloatType,
+	LinearFilter,
+	NearestFilter,
+	RGBAFormat,
+	ShaderLib,
+	UVMapping,
+	UniformsLib
+} from "../../../build/three.module.js";
 
 // Real-Time Polygonal-Light Shading with Linearly Transformed Cosines
 // by Eric Heitz, Jonathan Dupuy, Stephen Hill and David Neubelt
@@ -40,30 +41,18 @@ var RectAreaLightUniformsLib = {
 
 		// data textures
 
-		const ltc_float_1 = new Float32Array( LTC_MAT_1 );
-		const ltc_float_2 = new Float32Array( LTC_MAT_2 );
+		var ltc_1 = new DataTexture( new Float32Array( LTC_MAT_1 ), 64, 64, RGBAFormat, FloatType, UVMapping, ClampToEdgeWrapping, ClampToEdgeWrapping, LinearFilter, NearestFilter, 1 );
+		var ltc_2 = new DataTexture( new Float32Array( LTC_MAT_2 ), 64, 64, RGBAFormat, FloatType, UVMapping, ClampToEdgeWrapping, ClampToEdgeWrapping, LinearFilter, NearestFilter, 1 );
 
-		UniformsLib.LTC_FLOAT_1 = new DataTexture( ltc_float_1, 64, 64, RGBAFormat, FloatType, UVMapping, ClampToEdgeWrapping, ClampToEdgeWrapping, LinearFilter, NearestFilter, 1 );
-		UniformsLib.LTC_FLOAT_2 = new DataTexture( ltc_float_2, 64, 64, RGBAFormat, FloatType, UVMapping, ClampToEdgeWrapping, ClampToEdgeWrapping, LinearFilter, NearestFilter, 1 );
+		UniformsLib.LTC_1 = ltc_1;
+		UniformsLib.LTC_2 = ltc_2;
 
-		const ltc_half_1 = new Uint16Array( LTC_MAT_1.length );
+		// add ltc data textures to material uniforms
 
-		LTC_MAT_1.forEach( function ( x, index ) {
+		var ltc = { ltc_1: { value: null }, ltc_2: { value: null } };
 
-			ltc_half_1[ index ] = DataUtils.toHalfFloat( x );
-
-		} );
-
-		const ltc_half_2 = new Uint16Array( LTC_MAT_2.length );
-
-		LTC_MAT_2.forEach( function ( x, index ) {
-
-			ltc_half_2[ index ] = DataUtils.toHalfFloat( x );
-
-		} );
-
-		UniformsLib.LTC_HALF_1 = new DataTexture( ltc_half_1, 64, 64, RGBAFormat, HalfFloatType, UVMapping, ClampToEdgeWrapping, ClampToEdgeWrapping, LinearFilter, NearestFilter, 1 );
-		UniformsLib.LTC_HALF_2 = new DataTexture( ltc_half_2, 64, 64, RGBAFormat, HalfFloatType, UVMapping, ClampToEdgeWrapping, ClampToEdgeWrapping, LinearFilter, NearestFilter, 1 );
+		Object.assign( ShaderLib.standard.uniforms, ltc );
+		Object.assign( ShaderLib.physical.uniforms, ltc );
 
 	}
 

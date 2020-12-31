@@ -1,3 +1,7 @@
+/**
+ * @author sunag / http://www.sunag.com.br/
+ */
+
 import { TempNode } from '../core/TempNode.js';
 import { PositionNode } from './PositionNode.js';
 import { NormalNode } from './NormalNode.js';

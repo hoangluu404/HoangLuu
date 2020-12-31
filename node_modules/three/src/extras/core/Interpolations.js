@@ -1,4 +1,6 @@
 /**
+ * @author zz85 / http://www.lab4games.net/zz85/blog
+ *
  * Bezier Curves formulas obtained from
  * http://en.wikipedia.org/wiki/Bézier_curve
  */

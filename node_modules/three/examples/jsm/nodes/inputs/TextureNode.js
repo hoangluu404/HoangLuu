@@ -1,3 +1,7 @@
+/**
+ * @author sunag / http://www.sunag.com.br/
+ */
+
 import { InputNode } from '../core/InputNode.js';
 import { UVNode } from '../accessors/UVNode.js';
 import { ColorSpaceNode } from '../utils/ColorSpaceNode.js';

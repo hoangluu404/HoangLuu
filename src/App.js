@@ -1,139 +1,112 @@
-import './App.css';
 import * as THREE from 'three'
+import React, { Suspense, useState, useEffect, useRef } from 'react'
+import { Canvas, useLoader, useFrame, useThree } from 'react-three-fiber'
+import { useTransition, a, useSpring } from 'react-spring'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { OrbitControls, draco } from 'drei'
+import { useBox, usePlane, Physics, useParticle } from 'use-cannon'
+import { Vector3 } from 'three'
+import Spaceship from './spaceship.js'
 
-import { Vector3, TextureLoader, RepeatWrapping } from 'three'
-import React, { useState, useRef, Component, useEffect } from 'react'
-import { Canvas, useLoader, applyProps } from 'react-three-fiber'
-import { OrbitControls, Sky } from 'drei'
-import { useBox, usePlane, Physics } from 'use-cannon'
-import { useSpring } from '@react-spring/core'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import SphereBot from './assets/sphere_bot/scene.gltf'
-import { Player } from './Player'
-import dirt from './assets/dirt.jpg'
-import {Camera} from './Camera'
-import { a } from "@react-spring/three"
+const Ground = (props) => {
+  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], ...props }))
+  return(
+    <mesh ref={ref}  rotation={[-Math.PI/2,0,0]} position={[0, -10,0]} receiveShadow >
+      <planeBufferGeometry attach='geometry' args={[500,500]} />
+      <meshPhysicalMaterial attach='material' color='#171717' />
+    </mesh>
+)}
 
-function useKey(key, cb){
-  const callbackRef = useRef(cb)
-  useEffect(()=>{
-    callbackRef.current = cb
+
+function Loading() {
+  const [finished, set] = useState(false)
+  const [width, setWidth] = useState(0)
+
+  useEffect(() => {
+    THREE.DefaultLoadingManager.onLoad = () => set(true)
+    THREE.DefaultLoadingManager.onProgress = (url, itemsLoaded, itemsTotal) =>
+      setWidth((itemsLoaded / itemsTotal) * 200)
+  }, [])
+
+  const props = useTransition(finished, null, {
+    from: { opacity: 1, width: 0 },
+    leave: { opacity: 0 },
+    update: { width },
   })
 
-  useEffect(()=>{
-    function handle(event){
-      if(event.code ===key){
-        callbackRef.current(event)
-      }
-    }
-    document.addEventListener('keypress', handle)
-    return () => document.removeEventListener('keypress', handle)
-  }, [key])
-}
-
-function Bot() {
-  const gltf = useLoader(GLTFLoader, SphereBot)
-  return <primitive object={gltf.scene} position={[0, 5, 0]} />
-}
-
-function Box(props) {
-  const [ref, api] = useBox(() => ({ mass: 1, position: props.position }));
-  return (
-    <mesh
-      onClick={() => {
-        api.velocity.set(0, 2, 0);
-      }}
-      ref={ref}
-      position={[0, 2, 0]}
-    >
-      <boxBufferGeometry attach="geometry" />
-      <meshLambertMaterial attach="material" color={props.color} />
-    </mesh>
-  );
-}
-
-function App() {
-
-  // ground texture
-  const texture = new TextureLoader().load(dirt);
-  texture.wrapS = RepeatWrapping;
-  texture.wrapT = RepeatWrapping;
-  texture.repeat.set(240, 240);
-
-
-  // ground
-  function Ground(props) {
-    const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], ...props }))
-    return (
-      <mesh ref={ref}>
-        <planeBufferGeometry attach="geometry" args={[200, 200]} />
-        <meshStandardMaterial  attach="material" color="#e48080" />
-      </mesh>
-    )
-  }
-  
-  const [camX, setCamX] = useState(15)
-  const [camY, setCamY] = useState(5)
-  const [camZ, setCamZ] = useState(25)
-
-  var camera, scene, renderer
-  var mouse = new THREE.Vector2()
-  var raycaster = new THREE.Raycaster()
-  var vertex = new THREE.Vector3()
-
-  camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
+  return props.map(
+    ({ item: finished, key, props: { opacity, width } }) =>
+      !finished && (
+        <a.div className="loading" key={key} style={{ opacity }}>
+          <div className="loading-bar-container">
+            <a.div className="loading-bar" style={{ width }} />
+          </div>
+        </a.div>
+      ),
   )
-  camera.position.x = 15
-  camera.position.y = 5
-  camera.position.z = 15
+}
 
-  document.addEventListener(
-    'click', event => {
-      mouse.x = event.clientX / window.innerWidth * 2 - 1
-      mouse.y = -(event.clientY / window.innerHeight) * 2 - 1
-      raycaster.setFromCamera(mouse, camera)
-      camera.position.x = mouse.x
-      camera.position.y = mouse.y
-
-    },
-    false
-  )
-
+export default function App() {
+  const [rotY, setRotY] = useState(0)
 
   return (
     <>
-      <Canvas shadowMap sRGB gl={{ alpha: false }}
-        
-        onCreated={({ gl, scene }) => {
-          scene.background = new THREE.Color('lightblue');
-          gl.shadowMap.enabled = true;
-          gl.shadowMap.type = THREE.PCFSoftShadowMap;
-        }}>
-          <OrbitControls/>
-        <Sky sunPosition={new Vector3(100, 10, 100)}/>
-        <ambientLight intensity={0.3}/>
-        <pointLight 
+      <div className="bg" />
+      <h1>
+        HOANG:LUU
+      </h1>
+      <h2>
+        404
+      </h2>
+
+      <Canvas shadowMap camera={{ position: [15, 15, 15] }}>
+        <ambientLight intensity={0.75} />
+
+        <pointLight intensity={1} position={[-10, -25, -10]} />
+
+        <spotLight
           castShadow
-          intensity={0.8}
-          position={[100, 100, 100]}
+          intensity={2.25}
+          angle={0.2}
+          penumbra={1}
+          position={[25, 25, 25]}
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+          shadow-bias={-0.0001}
         />
-        <Camera position={[camX,camY,camZ]} />
+
+        <pointLight
+          castShadow
+          penumbra={1}
+          intensity={1}
+          position={[-100,25,-100]}
+        />
+
+
    
         
-        <Physics gravity={[0,-30,0]} >
-          <Ground />
-          <Box position={[0,10,0]} color='brown' />
-          <Player id='player1' position={[0, 10, 0]} />
+        {/* <fog attach="fog" args={['#cc7b32', 20, 40]} /> */}
+        {/* <fog attach="fog" args={['#000', 10, 20]} /> */}
+        <Physics gravity={[0,-100,0]} >
+          <Suspense fallback={null}>
+            <Spaceship position={[0,0,0]} />
+            <Ground position={[0,-5,0]} />
+          </Suspense>
         </Physics>
+        {/* <OrbitControls
+          enablePan={false}
+          enableZoom={false}
+          enableDamping
+          dampingFactor={0.5}
+          maxPolarAngle={Math.PI / 2}
+          minPolarAngle={Math.PI / 2}
+        /> */}
       </Canvas>
-
+      <div className="layer" />
+      <Loading />
+      <a href="https://github.com/hoangluu404" className="top-left" children="Github" />
+      <a href="https://www.linkedin.com/in/hoangluu0/" className="top-right" children="LinkedIn" />
+      {/* <a href="https://github.com/drcmda/react-three-fiber" className="bottom-left" children="+ react-three-fiber" /> */}
     </>
-  );
+  )
 }
-
-export default App;
-

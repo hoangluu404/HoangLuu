@@ -1,3 +1,7 @@
+/**
+ * @author alteredq / http://alteredqualia.com/
+ */
+
 import {
 	LinearFilter,
 	RGBFormat,
@@ -33,7 +37,7 @@ var SavePass = function ( renderTarget ) {
 
 	if ( this.renderTarget === undefined ) {
 
-		this.renderTarget = new WebGLRenderTarget( window.innerWidth, window.innerHeight, { minFilter: LinearFilter, magFilter: LinearFilter, format: RGBFormat } );
+		this.renderTarget = new WebGLRenderTarget( window.innerWidth, window.innerHeight, { minFilter: LinearFilter, magFilter: LinearFilter, format: RGBFormat, stencilBuffer: false } );
 		this.renderTarget.texture.name = "SavePass.rt";
 
 	}

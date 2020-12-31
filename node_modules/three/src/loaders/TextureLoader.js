@@ -1,3 +1,7 @@
+/**
+ * @author mrdoob / http://mrdoob.com/
+ */
+
 import { RGBAFormat, RGBFormat } from '../constants.js';
 import { ImageLoader } from './ImageLoader.js';
 import { Texture } from '../textures/Texture.js';

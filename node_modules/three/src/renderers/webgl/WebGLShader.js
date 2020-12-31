@@ -1,3 +1,7 @@
+/**
+ * @author mrdoob / http://mrdoob.com/
+ */
+
 function WebGLShader( gl, type, string ) {
 
 	const shader = gl.createShader( type );

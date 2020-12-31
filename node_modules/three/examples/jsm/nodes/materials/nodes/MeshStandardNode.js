@@ -1,3 +1,7 @@
+/**
+ * @author sunag / http://www.sunag.com.br/
+ */
+
 import {
 	Color,
 	Vector2

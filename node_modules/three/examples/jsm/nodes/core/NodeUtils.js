@@ -1,3 +1,7 @@
+/**
+ * @author sunag / http://www.sunag.com.br/
+ */
+
 var NodeUtils = {
 
 	elements: [ 'x', 'y', 'z', 'w' ],

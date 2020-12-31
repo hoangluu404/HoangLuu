@@ -1,9 +1,6 @@
-import { WebGLExtensions } from './WebGLExtensions';
-import { WebGLCapabilities } from './WebGLCapabilities';
-
 export class WebGLLights {
 
-	constructor( extensions: WebGLExtensions, capabilities: WebGLCapabilities );
+	constructor( gl: WebGLRenderingContext, properties: any, info: any );
 
 	state: {
 		version: number;

@@ -4,6 +4,8 @@ import { Interpolant } from '../Interpolant.js';
  *
  * Interpolant that evaluates to the sample value at the position preceeding
  * the parameter.
+ *
+ * @author tschw
  */
 
 function DiscreteInterpolant( parameterPositions, sampleValues, sampleSize, resultBuffer ) {

@@ -10,9 +10,4 @@ export class QuaternionKeyframeTrack extends KeyframeTrack {
 		interpolation?: InterpolationModes
 	);
 
-	/**
-	 * @default 'quaternion'
-	 */
-	ValueTypeName: string;
-
 }

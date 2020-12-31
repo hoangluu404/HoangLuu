@@ -4,6 +4,8 @@ import { Vector2 } from '../math/Vector2.js';
 import { Color } from '../math/Color.js';
 
 /**
+ * @author takahirox / http://github.com/takahirox
+ *
  * parameters = {
  *  color: <hex>,
  *

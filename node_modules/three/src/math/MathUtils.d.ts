@@ -63,11 +63,6 @@ export namespace MathUtils {
 	 */
 	export function randFloatSpread( range: number ): number;
 
-	/**
-	 * Deterministic pseudo-random float in the interval [ 0, 1 ].
-	 */
-	export function seededRandom( seed?: number ): number;
-
 	export function degToRad( degrees: number ): number;
 
 	export function radToDeg( radians: number ): number;

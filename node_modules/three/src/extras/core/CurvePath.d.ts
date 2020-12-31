@@ -6,19 +6,7 @@ export class CurvePath<T extends Vector> extends Curve<T> {
 
 	constructor();
 
-	/**
-	 * @default 'CurvePath'
-	 */
-	type: string;
-
-	/**
-	 * @default []
-	 */
 	curves: Curve<T>[];
-
-	/**
-	 * @default false
-	 */
 	autoClose: boolean;
 
 	add( curve: Curve<T> ): void;

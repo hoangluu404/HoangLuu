@@ -10,15 +10,8 @@ export class Box3 {
 
 	constructor( min?: Vector3, max?: Vector3 );
 
-	/**
-	 * @default new THREE.Vector3( + Infinity, + Infinity, + Infinity )
-	 */
-	min: Vector3;
-
-	/**
-	 * @default new THREE.Vector3( - Infinity, - Infinity, - Infinity )
-	 */
 	max: Vector3;
+	min: Vector3;
 	readonly isBox3: true;
 
 	set( min: Vector3, max: Vector3 ): this;

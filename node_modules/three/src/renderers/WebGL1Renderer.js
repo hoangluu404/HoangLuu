@@ -1,5 +1,9 @@
 import { WebGLRenderer } from './WebGLRenderer.js';
 
+/**
+ * @author Mugen87 / https://github.com/Mugen87
+ */
+
 function WebGL1Renderer( parameters ) {
 
 	WebGLRenderer.call( this, parameters );

@@ -1,21 +1,16 @@
 {
-  "name": "explore",
+  "name": "3fiber",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-spring/three": "^9.0.0-rc.3",
-    "@testing-library/jest-dom": "^5.11.6",
-    "@testing-library/react": "^11.2.2",
-    "@testing-library/user-event": "^12.6.0",
-    "drei": "^2.2.12",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-keyboard-event-handler": "^1.5.4",
-    "react-scripts": "4.0.1",
-    "react-three-fiber": "^5.3.10",
-    "three": "^0.123.0",
-    "use-cannon": "^0.5.3",
-    "web-vitals": "^0.2.4"
+    "drei": "^0.0.60",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "react-spring": "^8.0.27",
+    "react-three-fiber": "^4.2.12",
+    "three": "^0.118.3",
+    "use-cannon": "^0.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,10 +19,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [

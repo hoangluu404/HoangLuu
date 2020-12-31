@@ -8,15 +8,7 @@ export class AudioListener extends Object3D {
 	type: 'AudioListener';
 	context: AudioContext;
 	gain: GainNode;
-
-	/**
-	 * @default null
-	 */
 	filter: null | any;
-
-	/**
-	 * @default 0
-	 */
 	timeDelta: number;
 
 	getInput(): GainNode;

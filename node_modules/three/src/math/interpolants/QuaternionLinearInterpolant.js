@@ -3,6 +3,8 @@ import { Quaternion } from '../Quaternion.js';
 
 /**
  * Spherical linear unit quaternion interpolant.
+ *
+ * @author tschw
  */
 
 function QuaternionLinearInterpolant( parameterPositions, sampleValues, sampleSize, resultBuffer ) {

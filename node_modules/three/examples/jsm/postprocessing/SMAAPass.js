@@ -1,3 +1,7 @@
+/**
+ * @author mpk / http://polko.me/
+ */
+
 import {
 	LinearFilter,
 	NearestFilter,
@@ -21,6 +25,7 @@ var SMAAPass = function ( width, height ) {
 
 	this.edgesRT = new WebGLRenderTarget( width, height, {
 		depthBuffer: false,
+		stencilBuffer: false,
 		generateMipmaps: false,
 		minFilter: LinearFilter,
 		format: RGBFormat
@@ -29,6 +34,7 @@ var SMAAPass = function ( width, height ) {
 
 	this.weightsRT = new WebGLRenderTarget( width, height, {
 		depthBuffer: false,
+		stencilBuffer: false,
 		generateMipmaps: false,
 		minFilter: LinearFilter,
 		format: RGBAFormat

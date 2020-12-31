@@ -9,14 +9,7 @@ export class AnimationMixer extends EventDispatcher {
 
 	constructor( root: Object3D | AnimationObjectGroup );
 
-	/**
-	 * @default 0
-	 */
 	time: number;
-
-	/**
-	 * @default 1.0
-	 */
 	timeScale: number;
 
 	clipAction( clip: AnimationClip, root?: Object3D | AnimationObjectGroup, blendMode?: AnimationBlendMode ): AnimationAction;

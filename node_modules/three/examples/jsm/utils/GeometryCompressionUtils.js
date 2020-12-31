@@ -1,6 +1,8 @@
 /**
- * Octahedron and Quantization encodings based on work by:
+ * @author LeonYuanYao / https://github.com/LeonYuanYao
  *
+ * Octahedron and Quantization encodings based on work by:
+ * @auther Tarek Sherif @tsherif
  * @link https://github.com/tsherif/mesh-quantization-example
  *
  */
@@ -34,7 +36,7 @@ var GeometryCompressionUtils = {
 
 		}
 
-		const normal = mesh.geometry.attributes.normal;
+		let normal = mesh.geometry.attributes.normal;
 
 		if ( ! normal ) {
 
@@ -50,8 +52,8 @@ var GeometryCompressionUtils = {
 
 		}
 
-		const array = normal.array;
-		const count = normal.count;
+		let array = normal.array;
+		let count = normal.count;
 
 		let result;
 		if ( encodeMethod == "DEFAULT" ) {
@@ -61,7 +63,9 @@ var GeometryCompressionUtils = {
 
 			for ( let idx = 0; idx < array.length; idx += 3 ) {
 
-				const encoded = this.EncodingFuncs.defaultEncode( array[ idx ], array[ idx + 1 ], array[ idx + 2 ], 1 );
+				let encoded;
+
+				encoded = this.EncodingFuncs.defaultEncode( array[ idx ], array[ idx + 1 ], array[ idx + 2 ], 1 );
 
 				result[ idx + 0 ] = encoded[ 0 ];
 				result[ idx + 1 ] = encoded[ 1 ];
@@ -84,7 +88,9 @@ var GeometryCompressionUtils = {
 
 			for ( let idx = 0; idx < array.length; idx += 3 ) {
 
-				const encoded = this.EncodingFuncs.octEncodeBest( array[ idx ], array[ idx + 1 ], array[ idx + 2 ], 1 );
+				let encoded;
+
+				encoded = this.EncodingFuncs.octEncodeBest( array[ idx ], array[ idx + 1 ], array[ idx + 2 ], 1 );
 
 				result[ idx / 3 * 2 + 0 ] = encoded[ 0 ];
 				result[ idx / 3 * 2 + 1 ] = encoded[ 1 ];
@@ -100,7 +106,9 @@ var GeometryCompressionUtils = {
 
 			for ( let idx = 0; idx < array.length; idx += 3 ) {
 
-				const encoded = this.EncodingFuncs.octEncodeBest( array[ idx ], array[ idx + 1 ], array[ idx + 2 ], 2 );
+				let encoded;
+
+				encoded = this.EncodingFuncs.octEncodeBest( array[ idx ], array[ idx + 1 ], array[ idx + 2 ], 2 );
 
 				result[ idx / 3 * 2 + 0 ] = encoded[ 0 ];
 				result[ idx / 3 * 2 + 1 ] = encoded[ 1 ];
@@ -116,7 +124,9 @@ var GeometryCompressionUtils = {
 
 			for ( let idx = 0; idx < array.length; idx += 3 ) {
 
-				const encoded = this.EncodingFuncs.anglesEncode( array[ idx ], array[ idx + 1 ], array[ idx + 2 ] );
+				let encoded;
+
+				encoded = this.EncodingFuncs.anglesEncode( array[ idx ], array[ idx + 1 ], array[ idx + 2 ] );
 
 				result[ idx / 3 * 2 + 0 ] = encoded[ 0 ];
 				result[ idx / 3 * 2 + 1 ] = encoded[ 1 ];
@@ -185,7 +195,7 @@ var GeometryCompressionUtils = {
 
 		}
 
-		const position = mesh.geometry.attributes.position;
+		let position = mesh.geometry.attributes.position;
 
 		if ( ! position ) {
 
@@ -201,13 +211,13 @@ var GeometryCompressionUtils = {
 
 		}
 
-		const array = position.array;
-		const encodingBytes = 2;
+		let array = position.array;
+		let encodingBytes = 2;
 
-		const result = this.EncodingFuncs.quantizedEncode( array, encodingBytes );
+		let result = this.EncodingFuncs.quantizedEncode( array, encodingBytes );
 
-		const quantized = result.quantized;
-		const decodeMat = result.decodeMat;
+		let quantized = result.quantized;
+		let decodeMat = result.decodeMat;
 
 		// IMPORTANT: calculate original geometry bounding info first, before updating packed positions
 		if ( mesh.geometry.boundingBox == null ) mesh.geometry.computeBoundingBox();
@@ -247,7 +257,7 @@ var GeometryCompressionUtils = {
 
 		}
 
-		const uvs = mesh.geometry.attributes.uv;
+		let uvs = mesh.geometry.attributes.uv;
 
 		if ( ! uvs ) {
 
@@ -257,9 +267,9 @@ var GeometryCompressionUtils = {
 
 		if ( uvs.isPacked ) return;
 
-		const range = { min: Infinity, max: - Infinity };
+		let range = { min: Infinity, max: - Infinity };
 
-		const array = uvs.array;
+		let array = uvs.array;
 
 		for ( let i = 0; i < array.length; i ++ ) {
 
@@ -277,7 +287,7 @@ var GeometryCompressionUtils = {
 
 			for ( let i = 0; i < array.length; i += 2 ) {
 
-				const encoded = this.EncodingFuncs.defaultEncode( array[ i ], array[ i + 1 ], 0, 2 );
+				let encoded = this.EncodingFuncs.defaultEncode( array[ i ], array[ i + 1 ], 0, 2 );
 
 				result[ i ] = encoded[ 0 ];
 				result[ i + 1 ] = encoded[ 1 ];
@@ -320,7 +330,11 @@ var GeometryCompressionUtils = {
 
 		}
 
+
+
+
 	},
+
 
 	EncodingFuncs: {
 
@@ -328,16 +342,16 @@ var GeometryCompressionUtils = {
 
 			if ( bytes == 1 ) {
 
-				const tmpx = Math.round( ( x + 1 ) * 0.5 * 255 );
-				const tmpy = Math.round( ( y + 1 ) * 0.5 * 255 );
-				const tmpz = Math.round( ( z + 1 ) * 0.5 * 255 );
+				let tmpx = Math.round( ( x + 1 ) * 0.5 * 255 );
+				let tmpy = Math.round( ( y + 1 ) * 0.5 * 255 );
+				let tmpz = Math.round( ( z + 1 ) * 0.5 * 255 );
 				return new Uint8Array( [ tmpx, tmpy, tmpz ] );
 
 			} else if ( bytes == 2 ) {
 
-				const tmpx = Math.round( ( x + 1 ) * 0.5 * 65535 );
-				const tmpy = Math.round( ( y + 1 ) * 0.5 * 65535 );
-				const tmpz = Math.round( ( z + 1 ) * 0.5 * 65535 );
+				let tmpx = Math.round( ( x + 1 ) * 0.5 * 65535 );
+				let tmpy = Math.round( ( y + 1 ) * 0.5 * 65535 );
+				let tmpz = Math.round( ( z + 1 ) * 0.5 * 65535 );
 				return new Uint16Array( [ tmpx, tmpy, tmpz ] );
 
 			} else {
@@ -377,8 +391,8 @@ var GeometryCompressionUtils = {
 		// for `Angles` encoding
 		anglesEncode: function ( x, y, z ) {
 
-			const normal0 = parseInt( 0.5 * ( 1.0 + Math.atan2( y, x ) / Math.PI ) * 65535 );
-			const normal1 = parseInt( 0.5 * ( 1.0 + z ) * 65535 );
+			let normal0 = parseInt( 0.5 * ( 1.0 + Math.atan2( y, x ) / Math.PI ) * 65535 );
+			let normal1 = parseInt( 0.5 * ( 1.0 + z ) * 65535 );
 			return new Uint16Array( [ normal0, normal1 ] );
 
 		},
@@ -539,10 +553,10 @@ var GeometryCompressionUtils = {
 
 			}
 
-			const decodeMat = new Matrix4();
+			let decodeMat = new Matrix4();
 
-			const min = new Float32Array( 3 );
-			const max = new Float32Array( 3 );
+			let min = new Float32Array( 3 );
+			let max = new Float32Array( 3 );
 
 			min[ 0 ] = min[ 1 ] = min[ 2 ] = Number.MAX_VALUE;
 			max[ 0 ] = max[ 1 ] = max[ 2 ] = - Number.MAX_VALUE;
@@ -571,7 +585,7 @@ var GeometryCompressionUtils = {
 			decodeMat.transpose();
 
 
-			const multiplier = new Float32Array( [
+			let multiplier = new Float32Array( [
 				max[ 0 ] !== min[ 0 ] ? segments / ( max[ 0 ] - min[ 0 ] ) : 0,
 				max[ 1 ] !== min[ 1 ] ? segments / ( max[ 1 ] - min[ 1 ] ) : 0,
 				max[ 2 ] !== min[ 2 ] ? segments / ( max[ 2 ] - min[ 2 ] ) : 0
@@ -613,10 +627,10 @@ var GeometryCompressionUtils = {
 
 			}
 
-			const decodeMat = new Matrix3();
+			let decodeMat = new Matrix3();
 
-			const min = new Float32Array( 2 );
-			const max = new Float32Array( 2 );
+			let min = new Float32Array( 2 );
+			let max = new Float32Array( 2 );
 
 			min[ 0 ] = min[ 1 ] = Number.MAX_VALUE;
 			max[ 0 ] = max[ 1 ] = - Number.MAX_VALUE;
@@ -640,7 +654,7 @@ var GeometryCompressionUtils = {
 
 			decodeMat.transpose();
 
-			const multiplier = new Float32Array( [
+			let multiplier = new Float32Array( [
 				max[ 0 ] !== min[ 0 ] ? segments / ( max[ 0 ] - min[ 0 ] ) : 0,
 				max[ 1 ] !== min[ 1 ] ? segments / ( max[ 1 ] - min[ 1 ] ) : 0
 			] );

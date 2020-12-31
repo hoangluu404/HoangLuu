@@ -11,18 +11,9 @@ export class PointLightHelper extends Object3D {
 		color?: Color | string | number
 	);
 
-	/**
-	 * @default 'PointLightHelper'
-	 */
-	type: string;
-
 	light: PointLight;
 	color: Color | string | number | undefined;
 	matrix: Matrix4;
-
-	/**
-	 * @default false
-	 */
 	matrixAutoUpdate: boolean;
 
 	dispose(): void;

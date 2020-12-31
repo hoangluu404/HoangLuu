@@ -1,5 +1,5 @@
 export default /* glsl */`
-#if defined( USE_COLOR ) || defined( USE_INSTANCING_COLOR )
+#ifdef USE_COLOR
 
 	varying vec3 vColor;
 

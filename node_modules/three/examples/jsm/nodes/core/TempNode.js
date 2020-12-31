@@ -1,3 +1,8 @@
+/**
+ * Automatic node cache
+ * @author sunag / http://www.sunag.com.br/
+ */
+
 import { MathUtils } from '../../../../build/three.module.js';
 import { Node } from './Node.js';
 

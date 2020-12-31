@@ -1,4 +1,6 @@
 /**
+ * @author mrdoob / http://mrdoob.com/
+ *
  * https://github.com/google/model-viewer/blob/master/packages/model-viewer/src/three-components/EnvironmentScene.ts
  */
 

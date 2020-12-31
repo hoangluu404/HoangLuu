@@ -1,10 +1,6 @@
-import { Material } from './Material.js';
-import { cloneUniforms } from '../renderers/shaders/UniformsUtils.js';
-
-import default_vertex from '../renderers/shaders/ShaderChunk/default_vertex.glsl.js';
-import default_fragment from '../renderers/shaders/ShaderChunk/default_fragment.glsl.js';
-
 /**
+ * @author alteredq / http://alteredqualia.com/
+ *
  * parameters = {
  *  defines: { "label" : "value" },
  *  uniforms: { "parameter1": { value: 1.0 }, "parameter2": { value2: 2 } },
@@ -22,6 +18,12 @@ import default_fragment from '../renderers/shaders/ShaderChunk/default_fragment.
  *  morphNormals: <bool>
  * }
  */
+
+import { Material } from './Material.js';
+import { cloneUniforms } from '../renderers/shaders/UniformsUtils.js';
+
+import default_vertex from '../renderers/shaders/ShaderChunk/default_vertex.glsl.js';
+import default_fragment from '../renderers/shaders/ShaderChunk/default_fragment.glsl.js';
 
 function ShaderMaterial( parameters ) {
 
@@ -66,8 +68,6 @@ function ShaderMaterial( parameters ) {
 	this.index0AttributeName = undefined;
 	this.uniformsNeedUpdate = false;
 
-	this.glslVersion = null;
-
 	if ( parameters !== undefined ) {
 
 		if ( parameters.attributes !== undefined ) {
@@ -111,8 +111,6 @@ ShaderMaterial.prototype.copy = function ( source ) {
 
 	this.extensions = Object.assign( {}, source.extensions );
 
-	this.glslVersion = source.glslVersion;
-
 	return this;
 
 };
@@ -121,7 +119,6 @@ ShaderMaterial.prototype.toJSON = function ( meta ) {
 
 	const data = Material.prototype.toJSON.call( this, meta );
 
-	data.glslVersion = this.glslVersion;
 	data.uniforms = {};
 
 	for ( const name in this.uniforms ) {

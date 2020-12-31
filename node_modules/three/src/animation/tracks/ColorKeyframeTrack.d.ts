@@ -10,9 +10,4 @@ export class ColorKeyframeTrack extends KeyframeTrack {
 		interpolation?: InterpolationModes
 	);
 
-	/**
-	 * @default 'color'
-	 */
-	ValueTypeName: string;
-
 }

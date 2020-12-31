@@ -1,6 +1,10 @@
 /**
+ * @author alteredq / http://alteredqualia.com/
+ *
  * Blend two textures
  */
+
+
 
 var BlendShader = {
 

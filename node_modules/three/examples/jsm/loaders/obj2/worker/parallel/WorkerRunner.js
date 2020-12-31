@@ -1,4 +1,5 @@
 /**
+ * @author Kai Salmen / https://kaisalmen.de
  * Development repository: https://github.com/kaisalmen/WWOBJLoader
  */
 
@@ -67,8 +68,8 @@ DefaultWorkerPayloadHandler.prototype = {
 
 		if ( payload.cmd === 'parse' ) {
 
-			const scope = this;
-			const callbacks = {
+			let scope = this;
+			let callbacks = {
 				callbackOnAssetAvailable: function ( payload ) {
 
 					self.postMessage( payload );
@@ -81,18 +82,18 @@ DefaultWorkerPayloadHandler.prototype = {
 				}
 			};
 
-			const parser = this.parser;
+			let parser = this.parser;
 			if ( typeof parser[ 'setLogging' ] === 'function' ) {
 
 				parser.setLogging( this.logging.enabled, this.logging.debug );
 
 			}
 
-			const objectManipulator = new ObjectManipulator();
+			let objectManipulator = new ObjectManipulator();
 			objectManipulator.applyProperties( parser, payload.params, false );
 			objectManipulator.applyProperties( parser, callbacks, false );
 
-			const arraybuffer = payload.data.input;
+			let arraybuffer = payload.data.input;
 			let executeFunctionName = 'execute';
 			if ( typeof parser.getParseFunctionName === 'function' ) executeFunctionName = parser.getParseFunctionName();
 			if ( payload.usesMeshDisassembler ) {
@@ -130,8 +131,8 @@ const WorkerRunner = function ( payloadHandler ) {
 
 	this.payloadHandler = payloadHandler;
 
-	const scope = this;
-	const scopedRunner = function ( event ) {
+	let scope = this;
+	let scopedRunner = function ( event ) {
 
 		scope.processMessage( event.data );
 

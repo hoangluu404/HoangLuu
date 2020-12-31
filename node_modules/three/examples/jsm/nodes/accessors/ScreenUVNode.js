@@ -1,3 +1,7 @@
+/**
+ * @author sunag / http://www.sunag.com.br/
+ */
+
 import { TempNode } from '../core/TempNode.js';
 import { ResolutionNode } from './ResolutionNode.js';
 
@@ -60,3 +64,4 @@ ScreenUVNode.prototype.toJSON = function ( meta ) {
 };
 
 export { ScreenUVNode };
+

@@ -1,25 +1,28 @@
+import { MathUtils } from './MathUtils.js';
+
 /**
+ * @author bhouston / http://clara.io
+ * @author WestLangley / http://github.com/WestLangley
+ *
  * Ref: https://en.wikipedia.org/wiki/Spherical_coordinate_system
  *
  * The polar angle (phi) is measured from the positive y-axis. The positive y-axis is up.
  * The azimuthal angle (theta) is measured from the positive z-axis.
  */
 
-import { MathUtils } from './MathUtils.js';
+function Spherical( radius, phi, theta ) {
 
-class Spherical {
+	this.radius = ( radius !== undefined ) ? radius : 1.0;
+	this.phi = ( phi !== undefined ) ? phi : 0; // polar angle
+	this.theta = ( theta !== undefined ) ? theta : 0; // azimuthal angle
 
-	constructor( radius = 1, phi = 0, theta = 0 ) {
+	return this;
 
-		this.radius = radius;
-		this.phi = phi; // polar angle
-		this.theta = theta; // azimuthal angle
+}
 
-		return this;
+Object.assign( Spherical.prototype, {
 
-	}
-
-	set( radius, phi, theta ) {
+	set: function ( radius, phi, theta ) {
 
 		this.radius = radius;
 		this.phi = phi;
@@ -27,15 +30,15 @@ class Spherical {
 
 		return this;
 
-	}
+	},
 
-	clone() {
+	clone: function () {
 
 		return new this.constructor().copy( this );
 
-	}
+	},
 
-	copy( other ) {
+	copy: function ( other ) {
 
 		this.radius = other.radius;
 		this.phi = other.phi;
@@ -43,25 +46,25 @@ class Spherical {
 
 		return this;
 
-	}
+	},
 
 	// restrict phi to be betwee EPS and PI-EPS
-	makeSafe() {
+	makeSafe: function () {
 
 		const EPS = 0.000001;
 		this.phi = Math.max( EPS, Math.min( Math.PI - EPS, this.phi ) );
 
 		return this;
 
-	}
+	},
 
-	setFromVector3( v ) {
+	setFromVector3: function ( v ) {
 
 		return this.setFromCartesianCoords( v.x, v.y, v.z );
 
-	}
+	},
 
-	setFromCartesianCoords( x, y, z ) {
+	setFromCartesianCoords: function ( x, y, z ) {
 
 		this.radius = Math.sqrt( x * x + y * y + z * z );
 
@@ -81,6 +84,7 @@ class Spherical {
 
 	}
 
-}
+} );
+
 
 export { Spherical };

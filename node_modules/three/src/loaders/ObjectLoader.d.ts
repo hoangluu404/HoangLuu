@@ -27,8 +27,7 @@ export class ObjectLoader extends Loader {
 	parseObject<T extends Object3D>(
 		data: any,
 		geometries: any[],
-		materials: Material[],
-		animations: AnimationClip[]
+		materials: Material[]
 	): T;
 
 }

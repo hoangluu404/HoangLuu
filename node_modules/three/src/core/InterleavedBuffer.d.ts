@@ -10,27 +10,10 @@ export class InterleavedBuffer {
 
 	array: ArrayLike<number>;
 	stride: number;
-
-	/**
-	 * @default THREE.StaticDrawUsage
-	 */
 	usage: Usage;
-
-	/**
-	 * @default { offset: number; count: number }
-	 */
 	updateRange: { offset: number; count: number };
-
-	/**
-	 * @default 0
-	 */
 	version: number;
-
 	length: number;
-
-	/**
-	 * @default 0
-	 */
 	count: number;
 	needsUpdate: boolean;
 	uuid: string;

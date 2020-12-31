@@ -1,6 +1,6 @@
-import { LineBasicMaterial } from './LineBasicMaterial.js';
-
 /**
+ * @author alteredq / http://alteredqualia.com/
+ *
  * parameters = {
  *  color: <hex>,
  *  opacity: <float>,
@@ -12,6 +12,8 @@ import { LineBasicMaterial } from './LineBasicMaterial.js';
  *  gapSize: <float>
  * }
  */
+
+import { LineBasicMaterial } from './LineBasicMaterial.js';
 
 function LineDashedMaterial( parameters ) {
 

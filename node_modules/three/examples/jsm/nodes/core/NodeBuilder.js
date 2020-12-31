@@ -1,3 +1,7 @@
+/**
+ * @author sunag / http://www.sunag.com.br/
+ */
+
 import {
 	CubeReflectionMapping,
 	CubeRefractionMapping,
@@ -60,9 +64,7 @@ function NodeBuilder() {
 		uv: [],
 		color: [],
 		lights: false,
-		fog: false,
-		transparent: false,
-		irradiance: false
+		fog: false
 	};
 
 	this.includes = {

@@ -1,3 +1,8 @@
+/**
+ * @author zz85 / http://www.lab4games.net/zz85/blog
+ * minimal class for proxing functions to Path. Replaces old "extractSubpaths()"
+ **/
+
 import { Color } from '../../math/Color.js';
 import { Path } from './Path.js';
 import { Shape } from './Shape.js';
@@ -147,8 +152,7 @@ Object.assign( ShapePath.prototype, {
 		if ( noHoles === true )	return	toShapesNoHoles( subPaths );
 
 
-		let solid, tmpPath, tmpShape;
-		const shapes = [];
+		let solid, tmpPath, tmpShape, shapes = [];
 
 		if ( subPaths.length === 1 ) {
 

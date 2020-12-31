@@ -9,18 +9,6 @@ import {
 
 export class CanvasTexture extends Texture {
 
-	/**
-	 * @param canvas
-	 * @param [format=THREE.RGBAFormat]
-	 * @param [type=THREE.UnsignedByteType]
-	 * @param [mapping=THREE.Texture.DEFAULT_MAPPING]
-	 * @param [wrapS=THREE.ClampToEdgeWrapping]
-	 * @param [wrapT=THREE.ClampToEdgeWrapping]
-	 * @param [magFilter=THREE.LinearFilter]
-	 * @param [minFilter=THREE.LinearMipmapLinearFilter]
-	 * @param [anisotropy=1]
-	 * @param [encoding=THREE.LinearEncoding]
-	 */
 	constructor(
 		canvas: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement,
 		mapping?: Mapping,
@@ -32,7 +20,5 @@ export class CanvasTexture extends Texture {
 		type?: TextureDataType,
 		anisotropy?: number
 	);
-
-	readonly isCanvasTexture: true;
 
 }

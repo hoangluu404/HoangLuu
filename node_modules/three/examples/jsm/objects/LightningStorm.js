@@ -1,12 +1,6 @@
-import {
-	MathUtils,
-	Mesh,
-	MeshBasicMaterial,
-	Object3D
-} from "../../../build/three.module.js";
-import { LightningStrike } from "../geometries/LightningStrike.js";
-
 /**
+ * @author yomboprime https://github.com/yomboprime
+ *
  * @fileoverview Lightning strike object generator
  *
  *
@@ -51,6 +45,14 @@ import { LightningStrike } from "../geometries/LightningStrike.js";
  *
  *
 */
+
+import {
+	MathUtils,
+	Mesh,
+	MeshBasicMaterial,
+	Object3D
+} from "../../../build/three.module.js";
+import { LightningStrike } from "../geometries/LightningStrike.js";
 
 var LightningStorm = function ( stormParams ) {
 

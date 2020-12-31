@@ -1,3 +1,7 @@
+/**
+ * @author Mugen87 / https://github.com/Mugen87
+ */
+
 function WebGLInfo( gl ) {
 
 	const memory = {
@@ -14,6 +18,8 @@ function WebGLInfo( gl ) {
 	};
 
 	function update( count, mode, instanceCount ) {
+
+		instanceCount = instanceCount || 1;
 
 		render.calls ++;
 

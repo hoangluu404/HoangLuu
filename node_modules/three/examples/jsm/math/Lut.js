@@ -1,3 +1,7 @@
+/**
+ * @author daron1337 / http://daron1337.github.io/
+ */
+
 import {
 	Color
 } from "../../../build/three.module.js";

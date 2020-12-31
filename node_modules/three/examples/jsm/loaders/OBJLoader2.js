@@ -1,4 +1,5 @@
 /**
+ * @author Kai Salmen / https://kaisalmen.de
  * Development repository: https://github.com/kaisalmen/WWOBJLoader
  */
 
@@ -32,8 +33,8 @@ const OBJLoader2 = function ( manager ) {
 	this.meshReceiver = new MeshReceiver( this.materialHandler );
 
 	// as OBJLoader2 is no longer derived from OBJLoader2Parser, we need to override the default onAssetAvailable callback
-	const scope = this;
-	const defaultOnAssetAvailable = function ( payload ) {
+	let scope = this;
+	let defaultOnAssetAvailable = function ( payload ) {
 
 		scope._onAssetAvailable( payload );
 
@@ -227,10 +228,10 @@ OBJLoader2.prototype = Object.assign( Object.create( Loader.prototype ), {
 	 */
 	load: function ( url, onLoad, onFileLoadProgress, onError, onMeshAlter ) {
 
-		const scope = this;
+		let scope = this;
 		if ( onLoad === null || onLoad === undefined || ! ( onLoad instanceof Function ) ) {
 
-			const errorMessage = 'onLoad is not a function! Aborting...';
+			let errorMessage = 'onLoad is not a function! Aborting...';
 			scope.parser.callbacks.onError( errorMessage );
 			throw errorMessage;
 
@@ -264,9 +265,9 @@ OBJLoader2.prototype = Object.assign( Object.create( Loader.prototype ), {
 
 		}
 
-		const urlFull = new URL( url, window.location.href ).href;
+		let urlFull = new URL( url, window.location.href ).href;
 		let filename = urlFull;
-		const urlParts = urlFull.split( '/' );
+		let urlParts = urlFull.split( '/' );
 		if ( urlParts.length > 2 ) {
 
 			filename = urlParts[ urlParts.length - 1 ];
@@ -287,7 +288,7 @@ OBJLoader2.prototype = Object.assign( Object.create( Loader.prototype ), {
 				if ( numericalValue > numericalValueRef ) {
 
 					numericalValueRef = numericalValue;
-					const output = 'Download of "' + url + '": ' + ( numericalValue * 100 ).toFixed( 2 ) + '%';
+					let output = 'Download of "' + url + '": ' + ( numericalValue * 100 ).toFixed( 2 ) + '%';
 					scope.parser.callbacks.onProgress( 'progressLoad', output, numericalValue );
 
 				}
@@ -297,13 +298,13 @@ OBJLoader2.prototype = Object.assign( Object.create( Loader.prototype ), {
 		}
 
 		this.setCallbackOnMeshAlter( onMeshAlter );
-		const fileLoaderOnLoad = function ( content ) {
+		let fileLoaderOnLoad = function ( content ) {
 
 			scope.parser.callbacks.onLoad( scope.parse( content ), "OBJLoader2#load: Parsing completed" );
 
 		};
 
-		const fileLoader = new FileLoader( this.manager );
+		let fileLoader = new FileLoader( this.manager );
 		fileLoader.setPath( this.path || this.resourcePath );
 		fileLoader.setResponseType( 'arraybuffer' );
 		fileLoader.load( filename, fileLoaderOnLoad, onFileLoadProgress, onError );
@@ -369,8 +370,8 @@ OBJLoader2.prototype = Object.assign( Object.create( Loader.prototype ), {
 
 		if ( payload.type === 'mesh' ) {
 
-			const meshes = this.meshReceiver.buildMeshes( payload );
-			for ( const mesh of meshes ) {
+			let meshes = this.meshReceiver.buildMeshes( payload );
+			for ( let mesh of meshes ) {
 
 				this.baseObject3d.add( mesh );
 

@@ -8,14 +8,6 @@ export class Path extends CurvePath<Vector2> {
 
 	constructor( points?: Vector2[] );
 
-	/**
-	 * @default 'Path'
-	 */
-	type: string;
-
-	/**
-	 * @default new THREE.Vector2()
-	 */
 	currentPoint: Vector2;
 
 	/**

@@ -1,3 +1,8 @@
+/**
+ * @author WestLangley / http://github.com/WestLangley
+ *
+ */
+
 import {
 	InstancedInterleavedBuffer,
 	InterleavedBufferAttribute,

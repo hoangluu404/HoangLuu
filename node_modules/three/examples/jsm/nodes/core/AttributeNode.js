@@ -1,3 +1,7 @@
+/**
+ * @author sunag / http://www.sunag.com.br/
+ */
+
 import { Node } from './Node.js';
 
 function AttributeNode( name, type ) {

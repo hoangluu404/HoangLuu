@@ -1,12 +1,7 @@
-import {
-	BufferGeometry,
-	Face3,
-	Geometry,
-	Vector2,
-	Vector3
-} from "../../../build/three.module.js";
-
 /**
+ *	@author zz85 / http://twitter.com/blurspline / http://www.lab4games.net/zz85/blog
+ *	@author centerionware / http://www.centerionware.com
+ *
  *	Subdivision Geometry Modifier
  *		using Loop Subdivision Scheme
  *
@@ -19,6 +14,13 @@ import {
  *		- currently doesn't handle "Sharp Edges"
  */
 
+import {
+	Face3,
+	Geometry,
+	Vector2,
+	Vector3
+} from "../../../build/three.module.js";
+
 var SubdivisionModifier = function ( subdivisions ) {
 
 	this.subdivisions = ( subdivisions === undefined ) ? 1 : subdivisions;
@@ -28,9 +30,7 @@ var SubdivisionModifier = function ( subdivisions ) {
 // Applies the "modify" pattern
 SubdivisionModifier.prototype.modify = function ( geometry ) {
 
-	var isBufferGeometry = geometry.isBufferGeometry;
-
-	if ( isBufferGeometry ) {
+	if ( geometry.isBufferGeometry ) {
 
 		geometry = new Geometry().fromBufferGeometry( geometry );
 
@@ -40,7 +40,7 @@ SubdivisionModifier.prototype.modify = function ( geometry ) {
 
 	}
 
-	geometry.mergeVertices( 6 );
+	geometry.mergeVertices();
 
 	var repeats = this.subdivisions;
 
@@ -53,15 +53,7 @@ SubdivisionModifier.prototype.modify = function ( geometry ) {
 	geometry.computeFaceNormals();
 	geometry.computeVertexNormals();
 
-	if ( isBufferGeometry ) {
-
-		return new BufferGeometry().fromGeometry( geometry );
-
-	} else {
-
-		return geometry;
-
-	}
+	return geometry;
 
 };
 

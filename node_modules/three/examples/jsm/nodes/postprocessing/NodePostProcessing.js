@@ -1,3 +1,7 @@
+/**
+ * @author sunag / http://www.sunag.com.br/
+ */
+
 import {
 	LinearFilter,
 	Mesh,
@@ -19,7 +23,8 @@ function NodePostProcessing( renderer, renderTarget ) {
 		var parameters = {
 			minFilter: LinearFilter,
 			magFilter: LinearFilter,
-			format: RGBAFormat
+			format: RGBAFormat,
+			stencilBuffer: false
 		};
 
 		var size = renderer.getDrawingBufferSize( new Vector2() );

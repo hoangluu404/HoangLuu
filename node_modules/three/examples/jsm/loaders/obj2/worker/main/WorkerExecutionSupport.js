@@ -1,4 +1,5 @@
 /**
+ * @author Kai Salmen / https://kaisalmen.de
  * Development repository: https://github.com/kaisalmen/WWOBJLoader
  */
 
@@ -86,8 +87,8 @@ CodeBuilderInstructions.prototype = {
 	 */
 	addLibraryImport: function ( libraryPath ) {
 
-		const libraryUrl = new URL( libraryPath, window.location.href ).href;
-		const code = 'importScripts( "' + libraryUrl + '" );';
+		let libraryUrl = new URL( libraryPath, window.location.href ).href;
+		let code = 'importScripts( "' + libraryUrl + '" );';
 		this.importStatements.push(	code );
 
 	},
@@ -142,8 +143,8 @@ WorkerExecutionSupport.prototype = {
 			debug: false
 		};
 
-		const scope = this;
-		const scopeTerminate = function ( ) {
+		let scope = this;
+		let scopeTerminate = function ( ) {
 
 			scope._terminate();
 
@@ -290,13 +291,13 @@ WorkerExecutionSupport.prototype = {
 	_buildWorkerJsm: function ( codeBuilderInstructions ) {
 
 		let jsmSuccess = true;
-		const timeLabel = 'buildWorkerJsm';
-		const workerAvailable = this._buildWorkerCheckPreconditions( true, timeLabel );
+		let timeLabel = 'buildWorkerJsm';
+		let workerAvailable = this._buildWorkerCheckPreconditions( true, timeLabel );
 		if ( ! workerAvailable ) {
 
 			try {
 
-				const worker = new Worker( codeBuilderInstructions.jsmWorkerUrl.href, { type: "module" } );
+				let worker = new Worker( codeBuilderInstructions.jsmWorkerUrl.href, { type: "module" } );
 				this._configureWorkerCommunication( worker, true, codeBuilderInstructions.defaultGeometryType, timeLabel );
 
 			} catch ( e ) {
@@ -330,8 +331,8 @@ WorkerExecutionSupport.prototype = {
 	 */
 	_buildWorkerStandard: function ( codeBuilderInstructions ) {
 
-		const timeLabel = 'buildWorkerStandard';
-		const workerAvailable = this._buildWorkerCheckPreconditions( false, timeLabel );
+		let timeLabel = 'buildWorkerStandard';
+		let workerAvailable = this._buildWorkerCheckPreconditions( false, timeLabel );
 		if ( ! workerAvailable ) {
 
 			let concatenateCode = '';
@@ -349,8 +350,8 @@ WorkerExecutionSupport.prototype = {
 			concatenateCode += '\n';
 			concatenateCode += codeBuilderInstructions.getStartCode();
 
-			const blob = new Blob( [ concatenateCode ], { type: 'application/javascript' } );
-			const worker = new Worker( window.URL.createObjectURL( blob ) );
+			let blob = new Blob( [ concatenateCode ], { type: 'application/javascript' } );
+			let worker = new Worker( window.URL.createObjectURL( blob ) );
 
 			this._configureWorkerCommunication( worker, false, codeBuilderInstructions.defaultGeometryType, timeLabel );
 
@@ -385,8 +386,8 @@ WorkerExecutionSupport.prototype = {
 		this.worker.native = worker;
 		this.worker.jsmWorker = haveJsmWorker;
 
-		const scope = this;
-		const scopedReceiveWorkerMessage = function ( event ) {
+		let scope = this;
+		let scopedReceiveWorkerMessage = function ( event ) {
 
 			scope._receiveWorkerMessage( event );
 
@@ -433,8 +434,8 @@ WorkerExecutionSupport.prototype = {
 
 		}
 
-		const payload = event.data;
-		const workerRunnerName = this.worker.workerRunner.name;
+		let payload = event.data;
+		let workerRunnerName = this.worker.workerRunner.name;
 		switch ( payload.cmd ) {
 
 			case 'assetAvailable':

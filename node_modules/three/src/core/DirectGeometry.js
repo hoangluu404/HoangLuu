@@ -1,38 +1,42 @@
+/**
+ * @author mrdoob / http://mrdoob.com/
+ */
+
 import { Vector2 } from '../math/Vector2.js';
 
-class DirectGeometry {
+function DirectGeometry() {
 
-	constructor() {
+	this.vertices = [];
+	this.normals = [];
+	this.colors = [];
+	this.uvs = [];
+	this.uvs2 = [];
 
-		this.vertices = [];
-		this.normals = [];
-		this.colors = [];
-		this.uvs = [];
-		this.uvs2 = [];
+	this.groups = [];
 
-		this.groups = [];
+	this.morphTargets = {};
 
-		this.morphTargets = {};
+	this.skinWeights = [];
+	this.skinIndices = [];
 
-		this.skinWeights = [];
-		this.skinIndices = [];
+	// this.lineDistances = [];
 
-		// this.lineDistances = [];
+	this.boundingBox = null;
+	this.boundingSphere = null;
 
-		this.boundingBox = null;
-		this.boundingSphere = null;
+	// update flags
 
-		// update flags
+	this.verticesNeedUpdate = false;
+	this.normalsNeedUpdate = false;
+	this.colorsNeedUpdate = false;
+	this.uvsNeedUpdate = false;
+	this.groupsNeedUpdate = false;
 
-		this.verticesNeedUpdate = false;
-		this.normalsNeedUpdate = false;
-		this.colorsNeedUpdate = false;
-		this.uvsNeedUpdate = false;
-		this.groupsNeedUpdate = false;
+}
 
-	}
+Object.assign( DirectGeometry.prototype, {
 
-	computeGroups( geometry ) {
+	computeGroups: function ( geometry ) {
 
 		const groups = [];
 
@@ -76,9 +80,9 @@ class DirectGeometry {
 
 		this.groups = groups;
 
-	}
+	},
 
-	fromGeometry( geometry ) {
+	fromGeometry: function ( geometry ) {
 
 		const faces = geometry.faces;
 		const vertices = geometry.vertices;
@@ -277,7 +281,7 @@ class DirectGeometry {
 
 	}
 
-}
+} );
 
 
 export { DirectGeometry };

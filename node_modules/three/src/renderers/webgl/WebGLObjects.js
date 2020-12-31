@@ -1,3 +1,7 @@
+/**
+ * @author mrdoob / http://mrdoob.com/
+ */
+
 function WebGLObjects( gl, geometries, attributes, info ) {
 
 	let updateMap = new WeakMap();
@@ -28,12 +32,6 @@ function WebGLObjects( gl, geometries, attributes, info ) {
 		if ( object.isInstancedMesh ) {
 
 			attributes.update( object.instanceMatrix, gl.ARRAY_BUFFER );
-
-			if ( object.instanceColor !== null ) {
-
-				attributes.update( object.instanceColor, gl.ARRAY_BUFFER );
-
-			}
 
 		}
 

@@ -1,5 +1,8 @@
+/**
+ * @author James Baicoianu / http://www.baicoianu.com/
+ */
+
 import {
-	EventDispatcher,
 	Quaternion,
 	Vector3
 } from "../../../build/three.module.js";
@@ -29,10 +32,6 @@ var FlyControls = function ( object, domElement ) {
 	// disable default target object behavior
 
 	// internals
-
-	var scope = this;
-	var changeEvent = { type: "change" };
-	var EPS = 0.000001;
 
 	this.tmpQuaternion = new Quaternion();
 
@@ -187,37 +186,23 @@ var FlyControls = function ( object, domElement ) {
 
 	};
 
-	this.update = function () {
+	this.update = function ( delta ) {
 
-		var lastQuaternion = new Quaternion();
-		var lastPosition = new Vector3();
+		var moveMult = delta * this.movementSpeed;
+		var rotMult = delta * this.rollSpeed;
 
-		return function ( delta ) {
+		this.object.translateX( this.moveVector.x * moveMult );
+		this.object.translateY( this.moveVector.y * moveMult );
+		this.object.translateZ( this.moveVector.z * moveMult );
 
-			var moveMult = delta * scope.movementSpeed;
-			var rotMult = delta * scope.rollSpeed;
+		this.tmpQuaternion.set( this.rotationVector.x * rotMult, this.rotationVector.y * rotMult, this.rotationVector.z * rotMult, 1 ).normalize();
+		this.object.quaternion.multiply( this.tmpQuaternion );
 
-			scope.object.translateX( scope.moveVector.x * moveMult );
-			scope.object.translateY( scope.moveVector.y * moveMult );
-			scope.object.translateZ( scope.moveVector.z * moveMult );
+		// expose the rotation vector for convenience
+		this.object.rotation.setFromQuaternion( this.object.quaternion, this.object.rotation.order );
 
-			scope.tmpQuaternion.set( scope.rotationVector.x * rotMult, scope.rotationVector.y * rotMult, scope.rotationVector.z * rotMult, 1 ).normalize();
-			scope.object.quaternion.multiply( scope.tmpQuaternion );
 
-			if (
-				lastPosition.distanceToSquared( scope.object.position ) > EPS ||
-				8 * ( 1 - lastQuaternion.dot( scope.object.quaternion ) ) > EPS
-			) {
-
-				scope.dispatchEvent( changeEvent );
-				lastQuaternion.copy( scope.object.quaternion );
-				lastPosition.copy( scope.object.position );
-
-			}
-
-		};
-
-	}();
+	};
 
 	this.updateMovementVector = function () {
 
@@ -308,8 +293,5 @@ var FlyControls = function ( object, domElement ) {
 	this.updateRotationVector();
 
 };
-
-FlyControls.prototype = Object.create( EventDispatcher.prototype );
-FlyControls.prototype.constructor = FlyControls;
 
 export { FlyControls };

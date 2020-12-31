@@ -7,16 +7,8 @@ export class StereoCamera extends Camera {
 
 	type: 'StereoCamera';
 
-	/**
-	 * @default 1
-	 */
 	aspect: number;
-
-	/**
-	 * @default 0.064
-	 */
 	eyeSep: number;
-
 	cameraL: PerspectiveCamera;
 	cameraR: PerspectiveCamera;
 

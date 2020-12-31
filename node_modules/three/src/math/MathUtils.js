@@ -1,3 +1,10 @@
+/**
+ * @author alteredq / http://alteredqualia.com/
+ * @author mrdoob / http://mrdoob.com/
+ * @author WestLangley / http://github.com/WestLangley
+ * @author thezwap
+ */
+
 const _lut = [];
 
 for ( let i = 0; i < 256; i ++ ) {
@@ -5,8 +12,6 @@ for ( let i = 0; i < 256; i ++ ) {
 	_lut[ i ] = ( i < 16 ? '0' : '' ) + ( i ).toString( 16 );
 
 }
-
-let _seed = 1234567;
 
 const MathUtils = {
 
@@ -107,20 +112,6 @@ const MathUtils = {
 	randFloatSpread: function ( range ) {
 
 		return range * ( 0.5 - Math.random() );
-
-	},
-
-	// Deterministic pseudo-random float in the interval [ 0, 1 ]
-
-	seededRandom: function ( s ) {
-
-		if ( s !== undefined ) _seed = s % 2147483647;
-
-		// Park-Miller algorithm
-
-		_seed = _seed * 16807 % 2147483647;
-
-		return ( _seed - 1 ) / 2147483646;
 
 	},
 

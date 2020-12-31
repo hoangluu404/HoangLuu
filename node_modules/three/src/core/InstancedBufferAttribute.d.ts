@@ -44,9 +44,6 @@ export class InstancedBufferAttribute extends BufferAttribute {
 		meshPerAttribute?: number
 	);
 
-	/**
-	 * @default 1
-	 */
 	meshPerAttribute: number;
 
 }

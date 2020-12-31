@@ -7,16 +7,7 @@ export class InstancedBufferGeometry extends BufferGeometry {
 
 	constructor();
 
-	/**
-	 * @default 'InstancedBufferGeometry
-	 */
-	type: string;
-
 	groups: { start: number; count: number; instances: number }[];
-
-	/**
-	 * @default Infinity
-	 */
 	instanceCount: number;
 
 	addGroup( start: number, count: number, instances: number ): void;

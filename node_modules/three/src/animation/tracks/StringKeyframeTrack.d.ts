@@ -10,9 +10,4 @@ export class StringKeyframeTrack extends KeyframeTrack {
 		interpolation?: InterpolationModes
 	);
 
-	/**
-	 * @default 'string'
-	 */
-	ValueTypeName: string;
-
 }

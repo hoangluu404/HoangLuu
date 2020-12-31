@@ -1,3 +1,7 @@
+/**
+ * @author sunag / http://www.sunag.com.br/
+ */
+
 import { FloatNode } from '../inputs/FloatNode.js';
 import { NodeLib } from '../core/NodeLib.js';
 

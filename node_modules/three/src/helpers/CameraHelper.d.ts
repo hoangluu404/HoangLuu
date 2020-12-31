@@ -8,11 +8,6 @@ export class CameraHelper extends LineSegments {
 	camera: Camera;
 	pointMap: { [id: string]: number[] };
 
-	/**
-	 * @default 'CameraHelper'
-	 */
-	type: string;
-
 	update(): void;
 
 }

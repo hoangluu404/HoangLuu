@@ -1,3 +1,7 @@
+/**
+ * @author Don McCurdy / https://www.donmccurdy.com
+ */
+
 const LoaderUtils = {
 
 	decodeText: function ( array ) {

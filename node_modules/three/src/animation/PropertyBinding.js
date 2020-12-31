@@ -1,3 +1,13 @@
+/**
+ *
+ * A reference to a real property in the scene graph.
+ *
+ *
+ * @author Ben Houston / http://clara.io/
+ * @author David Sarno / http://lighthaus.us/
+ * @author tschw
+ */
+
 // Characters [].:/ are reserved for track binding syntax.
 const _RESERVED_CHARS_RE = '\\[\\]\\.:\\/';
 const _reservedRe = new RegExp( '[' + _RESERVED_CHARS_RE + ']', 'g' );
@@ -445,12 +455,12 @@ Object.assign( PropertyBinding.prototype, { // prototype, continued
 	// create getter / setter pair for a property in the scene graph
 	bind: function () {
 
-		let targetObject = this.node;
-		const parsedPath = this.parsedPath;
+		let targetObject = this.node,
+			parsedPath = this.parsedPath,
 
-		const objectName = parsedPath.objectName;
-		const propertyName = parsedPath.propertyName;
-		let propertyIndex = parsedPath.propertyIndex;
+			objectName = parsedPath.objectName,
+			propertyName = parsedPath.propertyName,
+			propertyIndex = parsedPath.propertyIndex;
 
 		if ( ! targetObject ) {
 

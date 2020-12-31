@@ -1,4 +1,5 @@
 /**
+ * @author Kai Salmen / https://kaisalmen.de
  * Development repository: https://github.com/kaisalmen/WWOBJLoader
  */
 
@@ -58,20 +59,20 @@ MaterialHandler.prototype = {
 	 */
 	createDefaultMaterials: function ( overrideExisting ) {
 
-		const defaultMaterial = new MeshStandardMaterial( { color: 0xDCF1FF } );
+		let defaultMaterial = new MeshStandardMaterial( { color: 0xDCF1FF } );
 		defaultMaterial.name = 'defaultMaterial';
 
-		const defaultVertexColorMaterial = new MeshStandardMaterial( { color: 0xDCF1FF } );
+		let defaultVertexColorMaterial = new MeshStandardMaterial( { color: 0xDCF1FF } );
 		defaultVertexColorMaterial.name = 'defaultVertexColorMaterial';
 		defaultVertexColorMaterial.vertexColors = true;
 
-		const defaultLineMaterial = new LineBasicMaterial();
+		let defaultLineMaterial = new LineBasicMaterial();
 		defaultLineMaterial.name = 'defaultLineMaterial';
 
-		const defaultPointMaterial = new PointsMaterial( { size: 0.1 } );
+		let defaultPointMaterial = new PointsMaterial( { size: 0.1 } );
 		defaultPointMaterial.name = 'defaultPointMaterial';
 
-		const runtimeMaterials = {};
+		let runtimeMaterials = {};
 		runtimeMaterials[ defaultMaterial.name ] = defaultMaterial;
 		runtimeMaterials[ defaultVertexColorMaterial.name ] = defaultVertexColorMaterial;
 		runtimeMaterials[ defaultLineMaterial.name ] = defaultLineMaterial;
@@ -90,14 +91,14 @@ MaterialHandler.prototype = {
 	addPayloadMaterials: function ( materialPayload ) {
 
 		let material, materialName;
-		const materialCloneInstructions = materialPayload.materials.materialCloneInstructions;
+		let materialCloneInstructions = materialPayload.materials.materialCloneInstructions;
 		let newMaterials = {};
 
 		if ( materialCloneInstructions !== undefined && materialCloneInstructions !== null ) {
 
 			let materialNameOrg = materialCloneInstructions.materialNameOrg;
 			materialNameOrg = ( materialNameOrg !== undefined && materialNameOrg !== null ) ? materialNameOrg : "";
-			const materialOrg = this.materials[ materialNameOrg ];
+			let materialOrg = this.materials[ materialNameOrg ];
 			if ( materialOrg ) {
 
 				material = materialOrg.clone();
@@ -126,7 +127,7 @@ MaterialHandler.prototype = {
 
 		if ( materials !== undefined && materials !== null && Object.keys( materials ).length > 0 ) {
 
-			const loader = new MaterialLoader();
+			let loader = new MaterialLoader();
 			let materialJson;
 
 			for ( materialName in materials ) {
@@ -180,7 +181,7 @@ MaterialHandler.prototype = {
 			let existingMaterial;
 			let add;
 
-			for ( const materialName in materials ) {
+			for ( let materialName in materials ) {
 
 				material = materials[ materialName ];
 				add = overrideExisting === true;
@@ -248,10 +249,10 @@ MaterialHandler.prototype = {
 	 */
 	getMaterialsJSON: function () {
 
-		const materialsJSON = {};
+		let materialsJSON = {};
 		let material;
 
-		for ( const materialName in this.materials ) {
+		for ( let materialName in this.materials ) {
 
 			material = this.materials[ materialName ];
 			materialsJSON[ materialName ] = material.toJSON();

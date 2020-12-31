@@ -24,6 +24,10 @@ export const CullFaceBack: CullFace;
 export const CullFaceFront: CullFace;
 export const CullFaceFrontBack: CullFace;
 
+export enum FrontFaceDirection {}
+export const FrontFaceDirectionCW: FrontFaceDirection;
+export const FrontFaceDirectionCCW: FrontFaceDirection;
+
 // Shadowing Type
 export enum ShadowMapType {}
 export const BasicShadowMap: ShadowMapType;
@@ -365,7 +369,3 @@ export const StreamReadUsage: Usage;
 export const StaticCopyUsage: Usage;
 export const DynamicCopyUsage: Usage;
 export const StreamCopyUsage: Usage;
-
-export enum GLSLVersion {}
-export const GLSL1: GLSLVersion;
-export const GLSL3: GLSLVersion;

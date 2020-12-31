@@ -1,8 +1,12 @@
 /**
+ * @author HypnosNova / https://www.threejs.org.cn/gallery/
+ *
  * Afterimage shader
  * I created this effect inspired by a demo on codepen:
  * https://codepen.io/brunoimbrizi/pen/MoRJaN?page=1&
  */
+
+
 
 var AfterimageShader = {
 

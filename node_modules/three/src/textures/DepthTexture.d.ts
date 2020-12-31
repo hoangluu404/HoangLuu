@@ -8,20 +8,9 @@ import {
 
 export class DepthTexture extends Texture {
 
-	/**
-	 * @param width
-	 * @param height
-	 * @param type
-	 * @param [mapping=THREE.Texture.DEFAULT_MAPPING]
-	 * @param [wrapS=THREE.ClampToEdgeWrapping]
-	 * @param [wrapT=THREE.ClampToEdgeWrapping]
-	 * @param [magFilter=THREE.NearestFilter]
-	 * @param [minFilter=THREE.NearestFilter]
-	 * @param [anisotropy=1]
-	 */
 	constructor(
 		width: number,
-		height: number,
+		heighht: number,
 		type?: TextureDataType,
 		mapping?: Mapping,
 		wrapS?: Wrapping,
@@ -32,17 +21,5 @@ export class DepthTexture extends Texture {
 	);
 
 	image: { width: number; height: number };
-
-	/**
-	 * @default false
-	 */
-	flipY: boolean;
-
-	/**
-	 * @default false
-	 */
-	generateMipmaps: boolean;
-
-	readonly isDepthTexture: true;
 
 }

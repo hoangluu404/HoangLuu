@@ -1,3 +1,7 @@
+/**
+ * @author bhouston / http://clara.io/
+ */
+
 import {
 	BackSide,
 	BoxBufferGeometry,

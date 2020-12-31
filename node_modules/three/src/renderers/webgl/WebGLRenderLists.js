@@ -1,3 +1,7 @@
+/**
+ * @author mrdoob / http://mrdoob.com/
+ */
+
 function painterSortStable( a, b ) {
 
 	if ( a.groupOrder !== b.groupOrder ) {
@@ -51,7 +55,7 @@ function reversePainterSortStable( a, b ) {
 }
 
 
-function WebGLRenderList( properties ) {
+function WebGLRenderList() {
 
 	const renderItems = [];
 	let renderItemsIndex = 0;
@@ -73,7 +77,6 @@ function WebGLRenderList( properties ) {
 	function getNextRenderItem( object, geometry, material, groupOrder, z, group ) {
 
 		let renderItem = renderItems[ renderItemsIndex ];
-		const materialProperties = properties.get( material );
 
 		if ( renderItem === undefined ) {
 
@@ -82,7 +85,7 @@ function WebGLRenderList( properties ) {
 				object: object,
 				geometry: geometry,
 				material: material,
-				program: materialProperties.program || defaultProgram,
+				program: material.program || defaultProgram,
 				groupOrder: groupOrder,
 				renderOrder: object.renderOrder,
 				z: z,
@@ -97,7 +100,7 @@ function WebGLRenderList( properties ) {
 			renderItem.object = object;
 			renderItem.geometry = geometry;
 			renderItem.material = material;
-			renderItem.program = materialProperties.program || defaultProgram;
+			renderItem.program = material.program || defaultProgram;
 			renderItem.groupOrder = groupOrder;
 			renderItem.renderOrder = object.renderOrder;
 			renderItem.z = z;
@@ -156,7 +159,6 @@ function WebGLRenderList( properties ) {
 	}
 
 	return {
-
 		opaque: opaque,
 		transparent: transparent,
 
@@ -170,9 +172,19 @@ function WebGLRenderList( properties ) {
 
 }
 
-function WebGLRenderLists( properties ) {
+function WebGLRenderLists() {
 
 	let lists = new WeakMap();
+
+	function onSceneDispose( event ) {
+
+		const scene = event.target;
+
+		scene.removeEventListener( 'dispose', onSceneDispose );
+
+		lists.delete( scene );
+
+	}
 
 	function get( scene, camera ) {
 
@@ -181,16 +193,18 @@ function WebGLRenderLists( properties ) {
 
 		if ( cameras === undefined ) {
 
-			list = new WebGLRenderList( properties );
+			list = new WebGLRenderList();
 			lists.set( scene, new WeakMap() );
 			lists.get( scene ).set( camera, list );
+
+			scene.addEventListener( 'dispose', onSceneDispose );
 
 		} else {
 
 			list = cameras.get( camera );
 			if ( list === undefined ) {
 
-				list = new WebGLRenderList( properties );
+				list = new WebGLRenderList();
 				cameras.set( camera, list );
 
 			}
@@ -215,4 +229,4 @@ function WebGLRenderLists( properties ) {
 }
 
 
-export { WebGLRenderLists, WebGLRenderList };
+export { WebGLRenderLists };

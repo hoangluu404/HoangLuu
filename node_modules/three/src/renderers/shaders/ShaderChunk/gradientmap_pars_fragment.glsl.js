@@ -23,4 +23,5 @@ vec3 getGradientIrradiance( vec3 normal, vec3 lightDirection ) {
 	#endif
 
 }
+
 `;

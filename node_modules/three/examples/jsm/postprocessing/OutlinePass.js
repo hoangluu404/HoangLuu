@@ -1,3 +1,7 @@
+/**
+ * @author spidersharma / http://eduperiment.com/
+ */
+
 import {
 	AdditiveBlending,
 	Color,
@@ -31,8 +35,6 @@ var OutlinePass = function ( resolution, scene, camera, selectedObjects ) {
 	this.edgeStrength = 3.0;
 	this.downSampleRatio = 2;
 	this.pulsePeriod = 0;
-
-	this._visibilityCache = new Map();
 
 	Pass.call( this );
 
@@ -174,19 +176,18 @@ OutlinePass.prototype = Object.assign( Object.create( Pass.prototype ), {
 
 	changeVisibilityOfSelectedObjects: function ( bVisible ) {
 
-		var cache = this._visibilityCache;
-
 		function gatherSelectedMeshesCallBack( object ) {
 
 			if ( object.isMesh ) {
 
-				if ( bVisible === true ) {
+				if ( bVisible ) {
 
-					object.visible = cache.get( object );
+					object.visible = object.userData.oldVisible;
+					delete object.userData.oldVisible;
 
 				} else {
 
-					cache.set( object, object.visible );
+					object.userData.oldVisible = object.visible;
 					object.visible = bVisible;
 
 				}
@@ -206,7 +207,6 @@ OutlinePass.prototype = Object.assign( Object.create( Pass.prototype ), {
 
 	changeVisibilityOfNonSelectedObjects: function ( bVisible ) {
 
-		var cache = this._visibilityCache;
 		var selectedMeshes = [];
 
 		function gatherSelectedMeshesCallBack( object ) {
@@ -224,9 +224,7 @@ OutlinePass.prototype = Object.assign( Object.create( Pass.prototype ), {
 
 		function VisibilityChangeCallBack( object ) {
 
-			if ( object.isMesh || object.isSprite ) {
-
-				// only meshes and sprites are supported by OutlinePass
+			if ( object.isMesh || object.isLine || object.isSprite ) {
 
 				var bFound = false;
 
@@ -243,33 +241,13 @@ OutlinePass.prototype = Object.assign( Object.create( Pass.prototype ), {
 
 				}
 
-				if ( bFound === false ) {
+				if ( ! bFound ) {
 
 					var visibility = object.visible;
 
-					if ( bVisible === false || cache.get( object ) === true ) {
+					if ( ! bVisible || object.bVisible ) object.visible = bVisible;
 
-						object.visible = bVisible;
-
-					}
-
-					cache.set( object, visibility );
-
-				}
-
-			} else if ( object.isPoints || object.isLine ) {
-
-				// the visibilty of points and lines is always set to false in order to
-				// not affect the outline computation
-
-				if ( bVisible === true ) {
-
-					object.visible = cache.get( object ); // restore
-
-				} else {
-
-					cache.set( object, object.visible );
-					object.visible = bVisible;
+					object.bVisible = visibility;
 
 				}
 
@@ -320,7 +298,6 @@ OutlinePass.prototype = Object.assign( Object.create( Pass.prototype ), {
 
 			// Make selected objects visible
 			this.changeVisibilityOfSelectedObjects( true );
-			this._visibilityCache.clear();
 
 			// Update Texture Matrix for Depth compare
 			this.updateTextureMatrix();
@@ -336,7 +313,6 @@ OutlinePass.prototype = Object.assign( Object.create( Pass.prototype ), {
 			renderer.render( this.renderScene, this.renderCamera );
 			this.renderScene.overrideMaterial = null;
 			this.changeVisibilityOfNonSelectedObjects( true );
-			this._visibilityCache.clear();
 
 			this.renderScene.background = currentBackground;
 

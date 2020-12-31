@@ -1,6 +1,5 @@
-import {
-	Vector2
-} from "../../../build/three.module.js";
+/* Author: Aleksandr Albert
+// Website: www.routter.co.tt
 
 // Description: A deep water ocean shader set
 // based on an implementation of a Tessendorf Waves
@@ -21,6 +20,11 @@ import {
 
 // -- Rendering Shader
 // [7] ocean_main               -> Vertex and Fragment shader used to create the final render
+*/
+
+import {
+	Vector2
+} from "../../../build/three.module.js";
 
 var OceanShaders = {};
 OceanShaders[ "ocean_sim_vertex" ] = {

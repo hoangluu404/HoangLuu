@@ -1,11 +1,7 @@
-import {
-	BufferGeometry,
-	Float32BufferAttribute,
-	Matrix4,
-	Vector3
-} from "../../../build/three.module.js";
-
 /**
+ * @author Mugen87 / https://github.com/Mugen87
+ * @author spite / https://github.com/spite
+ *
  * You can use this geometry to create a decal mesh, that serves different kinds of purposes.
  * e.g. adding unique details to models, performing dynamic visual environmental changes or covering seams.
  *
@@ -19,6 +15,13 @@ import {
  * reference: http://blog.wolfire.com/2009/06/how-to-project-decals/
  *
  */
+
+import {
+	BufferGeometry,
+	Float32BufferAttribute,
+	Matrix4,
+	Vector3
+} from "../../../build/three.module.js";
 
 var DecalGeometry = function ( mesh, position, orientation, size ) {
 
@@ -40,8 +43,7 @@ var DecalGeometry = function ( mesh, position, orientation, size ) {
 	projectorMatrix.makeRotationFromEuler( orientation );
 	projectorMatrix.setPosition( position );
 
-	var projectorMatrixInverse = new Matrix4();
-	projectorMatrixInverse.copy( projectorMatrix ).invert();
+	var projectorMatrixInverse = new Matrix4().getInverse( projectorMatrix );
 
 	// generate buffers
 

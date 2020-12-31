@@ -1,3 +1,7 @@
+/**
+ * @author sunag / http://www.sunag.com.br/
+ */
+
 import { TempNode } from '../core/TempNode.js';
 import { FunctionNode } from '../core/FunctionNode.js';
 import { MaxMIPLevelNode } from './MaxMIPLevelNode.js';

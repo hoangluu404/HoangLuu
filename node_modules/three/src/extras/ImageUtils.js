@@ -1,3 +1,9 @@
+/**
+ * @author mrdoob / http://mrdoob.com/
+ * @author alteredq / http://alteredqualia.com/
+ * @author szimek / https://github.com/szimek/
+ */
+
 let _canvas;
 
 const ImageUtils = {

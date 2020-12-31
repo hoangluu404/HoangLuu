@@ -1,3 +1,8 @@
+/**
+ * @author mrdoob / http://mrdoob.com/
+ */
+
+
 import { Pass } from "../postprocessing/Pass.js";
 
 var ClearPass = function ( clearColor, clearAlpha ) {

@@ -1,5 +1,9 @@
 import { Line } from './Line.js';
 
+/**
+ * @author mgreter / http://github.com/mgreter
+ */
+
 function LineLoop( geometry, material ) {
 
 	Line.call( this, geometry, material );

@@ -4,6 +4,9 @@ import { Vector2 } from '../math/Vector2.js';
 import { Color } from '../math/Color.js';
 
 /**
+ * @author mrdoob / http://mrdoob.com/
+ * @author alteredq / http://alteredqualia.com/
+ *
  * parameters = {
  *  color: <hex>,
  *  specular: <hex>,

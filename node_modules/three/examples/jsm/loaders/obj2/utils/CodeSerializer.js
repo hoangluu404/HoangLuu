@@ -1,4 +1,5 @@
 /**
+ * @author Kai Salmen / https://kaisalmen.de
  * Development repository: https://github.com/kaisalmen/WWOBJLoader
  */
 
@@ -17,15 +18,15 @@ const CodeSerializer = {
 	serializeClass: function ( targetPrototype, targetPrototypeInstance, basePrototypeName, overrideFunctions ) {
 
 		let objectPart, constructorString, i, funcInstructions, funcTemp;
-		const fullObjectName = targetPrototypeInstance.constructor.name;
-		const prototypeFunctions = [];
-		const objectProperties = [];
-		const objectFunctions = [];
-		const isExtended = ( basePrototypeName !== null && basePrototypeName !== undefined );
+		let fullObjectName = targetPrototypeInstance.constructor.name;
+		let prototypeFunctions = [];
+		let objectProperties = [];
+		let objectFunctions = [];
+		let isExtended = ( basePrototypeName !== null && basePrototypeName !== undefined );
 
 		if ( ! Array.isArray( overrideFunctions ) ) overrideFunctions = [];
 
-		for ( const name in targetPrototype.prototype ) {
+		for ( let name in targetPrototype.prototype ) {
 
 			objectPart = targetPrototype.prototype[ name ];
 			funcInstructions = new CodeSerializationInstruction( name, fullObjectName + '.prototype.' + name );
@@ -67,7 +68,7 @@ const CodeSerializer = {
 
 		}
 
-		for ( const name in targetPrototype ) {
+		for ( let name in targetPrototype ) {
 
 			objectPart = targetPrototype[ name ];
 			funcInstructions = new CodeSerializationInstruction( name, fullObjectName + '.' + name );

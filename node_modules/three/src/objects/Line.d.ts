@@ -19,7 +19,7 @@ export class Line <
 	geometry: TGeometry;
 	material: TMaterial;
 
-	type: 'Line' | 'LineLoop' | 'LineSegments' | string;
+	type: 'Line' | 'LineLoop' | 'LineSegments';
 	readonly isLine: true;
 
 	morphTargetInfluences?: number[];

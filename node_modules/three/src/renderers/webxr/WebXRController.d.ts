@@ -1,7 +1,4 @@
 import { Group } from '../../objects/Group';
-import { XREventType, XRFrame, XRInputSource, XRReferenceSpace } from './WebXR';
-
-export type XRControllerEventType = XREventType | 'disconnected' | 'connected'
 
 export class WebXRController {
 
@@ -9,8 +6,8 @@ export class WebXRController {
 
 	getTargetRaySpace(): Group;
 	getGripSpace(): Group;
-	dispatchEvent( event: { type: XRControllerEventType, data?: XRInputSource } ): this;
-	disconnect( inputSource: XRInputSource ): this;
-	update( inputSource: XRInputSource, frame: XRFrame, referenceSpace: XRReferenceSpace ): this;
+	dispatchEvent( event: object ): this;
+	disconnect( inputSource: object ): this;
+	update( inputSource: object, frame: object, referenceSpace: string ): this;
 
 }
