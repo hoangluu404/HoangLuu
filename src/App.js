@@ -73,17 +73,10 @@ export default function App() {
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
           shadow-bias={-0.0001}
-        />
 
-        <pointLight
-          castShadow
-          penumbra={1}
-          intensity={1}
-          position={[-100,25,-100]}
         />
 
 
-   
         
         {/* <fog attach="fog" args={['#cc7b32', 20, 40]} /> */}
         {/* <fog attach="fog" args={['#000', 10, 20]} /> */}
