@@ -1,0 +1,170 @@
+{
+  "accessors": [
+    {
+      "componentType": 5125,
+      "count": 816,
+      "max": [
+        271
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 272,
+      "max": [
+        1.002850353717804,
+        1.007843137254902,
+        1.0078477864171944
+      ],
+      "min": [
+        -1.004992783537098,
+        -1.007843137254902,
+        -1.0078384880926095
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 272,
+      "max": [
+        25.03242540941858,
+        0.02442598925256334,
+        25.024425989252563
+      ],
+      "min": [
+        -25.016426569086548,
+        -50.02442598925256,
+        -25.024425989252563
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "holos-tyler (https://sketchfab.com/holos-tyler)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/a-ad0da937abd74452b2ebc883e1619bbb",
+      "title": "A"
+    },
+    "generator": "Sketchfab-5.81.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 736
+    }
+  ],
+  "buffers": [
+    {
+      "name": "A-draco",
+      "byteLength": 736,
+      "uri": "data:application/octet-stream;base64,RFJBQ08CAgEBAAAAiAGQAgGPAhACggIIBMEBA0VvW/VubRsVVf260NLSKqj1eVAobXlXqr61fbAu5QFKoVpCS7UKLVXtQylPFVXtG0Xpo+i6NaWg4F3bslKUvlpLqgCKUgABARCrMQQpOcwVWEvn5FoOeN3mEj1yU9njxlePaiStFxA3wnPTrlLt24F+YLs1HYYsZXmlooUC/wAAAAEAAQAJAwABAgEBCQMAAAMBAQEADAPVCnh4mQbwxQOZBk0DeBEHhRcwOZnBHoCgFECzSoTfWtHjpLL9SYSDUu6BsNgHGvIZNLDcmIX7yISSfBE3TMUsyymkwwfQwSlQKDDNDQClhBsANHl0AAfsDQCzlBsATLm3AD24DgBodEBcLOYGgEh2HgAA2DwAADA3AERyUKAAgAC4pNUAcMoBB9QAcEnJ4FW2cQBA4wI2DgBoROYA4MbaAUCKtgNAFBlKWwC4ergAAEAgCwB/DxcA7gkLAMjCzABAOpwBQHKDAkBHDgWApBAJgAkIEAAAQAToAYATIKDUoQCgkIOYGQDSNigAdISiMwFAJROg5SoAb0EH+I6AmjYAaBoAAMAAA5YASxEg+gJ0yCcAblROAFxJFgChB+IOxEwAEM0EaC0QBwFAIwETACASlgSAAagKQN9SAQBAbQKoY9AAwMeVAACRBuSBApD3JQCwpAH5BBXgjSgAbnMCAGNmKCANgH2PFAA6yikAXuUMgG3XGQAkR54BgHQAgI8C4PkANEeA9Q/A4BdA5fwAfLIQQI9PAoAwKCUAJvBBAAAgEaCHD7ACj9UWAAEfiLWBLxJQo2CgzgCAeysBGAsAAAAA/wcAAJ7vx8EAAEjCAADIwQAASEILBgMBAQP/AdE2mQaJAf///+c81DdwWg73V/P011AaXT78ijKoPhwfAh8CH+ggBQCnBuUUdUl5harq7N1ZSHDGBxBQY0eSJhz9tY6A/wAAAH8AAAD/AlZfCA=="
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "color_13324106",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5972017883637631,
+          0.0781874218051863,
+          0.06847816984440014,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.8
+      },
+      "alphaMode": "OPAQUE"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 2
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "NORMAL": 0,
+                "POSITION": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.7071067811865475,
+        0,
+        0,
+        0.7071067811865476
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "A.obj.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": ""
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ]
+}

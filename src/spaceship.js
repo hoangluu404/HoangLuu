@@ -1,11 +1,12 @@
-import * as THREE from 'three'
-import React, { Suspense, useState, useEffect, useRef } from 'react'
+import React, { Suspense, useState, useEffect, useRef, useMemo } from 'react'
 import { Canvas, useLoader, useFrame, useThree } from 'react-three-fiber'
-import { useTransition, a, useSpring } from 'react-spring'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls, draco } from 'drei'
-import { useBox, usePlane, Physics, useParticle,useTrimesh } from 'use-cannon'
+import { useBox, usePlane, useSphere, Physics, useParticle,useTrimesh,useConvexPolyhedron } from 'use-cannon'
 import { Vector3 } from 'three'
+
+import { a, useSpring } from 'react-spring'
+
 
 function moveFieldByKey(key){
   const keys = {
@@ -53,16 +54,39 @@ const usePlayerControls = () => {
   return movement
 }
 
-const Spaceship = ({position }) => {
+const Spaceship = ({position}) => {
+
+  const [active, setActive] = useState(false)
+  const activeRef = useRef(active)
+  activeRef.current = active
+//   const { spring } = useSpring({
+//     spring: active,
+//     config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 }
+// })
+  const color = "#e45858"
+  // spring.to([0, 1], ["#FFF", "#e45858"])
+
+  useEffect(() => {
+    let timeout
+    const toggleActive = () => {
+      timeout = setTimeout(() => {
+          setActive(Number(!activeRef.current))
+          toggleActive()
+      }, Math.random() * 2000)
+    }
+    toggleActive()
+    return () => {
+    clearTimeout(timeout)
+    }
+  }, [])
+
   const {camera} = useThree()
-  const { nodes, materials } = useLoader(GLTFLoader, '/3D/aircrafts/aircrafts-draco.gltf', draco())
-  const [isFly,setFly] = useState(false)
-  const [ref, api] = useBox(() => ({mass: 100, rotation:[3*Math.PI/2,angle,0] }))
+  const { nodes, materials } = useLoader(GLTFLoader, '/3D/aircrafts-draco.gltf', draco())
+  // const [geo] = useMemo(() => new THREE.Geometry().fromBufferGeometry(nodes.Box002_Material25_0.geometry), [nodes])
+  const [ref, api] = useSphere(() => ({    mass: 100, rotation:[3*Math.PI/2,angle,0] }))
   const [angle,setAngle] = useState(0)
   const [moveX, setMoveX] = useState(0)
   const [moveZ, setMoveZ] = useState(0)
-  const [x, setX] = useState(0)
-  const [z, setZ] = useState(0)
   const {
     moveForward,
     moveBackward,
@@ -70,27 +94,36 @@ const Spaceship = ({position }) => {
     moveRight,
     jump
   } = usePlayerControls()
-  console.log(materials.scene)
 
   useFrame(()=>{
     // camera
-    camera.position.set(15+ref.current.position.x,5,15+ref.current.position.z)
-    camera.lookAt(ref.current.position.x,0+ref.current.position.y,ref.current.position.z)
-    console.log('x=',ref.current.position.x)
-    console.log('z=',ref.current.position.z)
+    camera.position.set(15+ref.current.position.x,10,ref.current.position.z)
+    camera.lookAt(ref.current.position.x,ref.current.position.y,ref.current.position.z)
+
     const direction = new Vector3()
 
     setAngle(angle+0.025*(Number(moveLeft)-Number(moveRight)))
     if(angle<-360 || angle>360)
       setAngle(0)
-    console.log('angle =',angle,'deg')
 
     // set Forward direction in Polar Coordinates
     setMoveX(10*Math.cos(angle))
     setMoveZ(10*Math.sin(angle))
 
     // set Directional Vectors
-    const frontVector = new Vector3(moveZ*(-Number(moveForward)),ref.current.position.y < 0? 1.5*Number(jump)-5*Number(moveBackward)+Number(moveForward):0,moveX*(-Number(moveForward)))
+    const frontVector = new Vector3(
+      // x
+      moveZ*(-Number(moveForward)-Number(moveRight)-Number(moveLeft)),
+      
+      // y
+      ref.current.position.y < 5? 
+        -5*Number(moveBackward)
+        +2*Number(moveForward)
+        // +Number(jump)
+        :0.001*Number(moveForward),
+
+      //z
+      moveX*(-Number(moveForward)-Number(moveRight)-Number(moveLeft)))
     const sideVector = new Vector3(0,0,0) // currently not in use
 
     // combine vectors
@@ -110,15 +143,15 @@ const Spaceship = ({position }) => {
 
   return (
     <>
-
-    <group   position={isFly?position:[0,-5,0]} scale={[0.1, 0.1, 0.1]}
+    
+    <group   position={position} scale={[0.1, 0.1, 0.1]}
       ref={ref}
       >
       <group >
         <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_03_Default_0.geometry} material-color='#252525' />
-        <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_02_Default_0.geometry} material-color='orange' />
+        <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_02_Default_0.geometry} material-color={color} />
         <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_Material25_0.geometry} material-color='white' />
-        <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_Material26_0.geometry} material-color='red' />
+        <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_Material26_0.geometry} material-color={color} />
         <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_01_Default_0.geometry} material-color='#add8e6' />
         <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_08_Default_0.geometry} material-color='grey' />
       </group>

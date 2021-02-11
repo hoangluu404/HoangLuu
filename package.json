@@ -2,7 +2,9 @@
   "name": "3fiber",
   "version": "0.1.0",
   "private": true,
+  "main":"index.js",
   "dependencies": {
+    "@react-spring/three": "^9.0.0-rc.3",
     "drei": "^0.0.60",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

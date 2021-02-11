@@ -1,0 +1,170 @@
+{
+  "accessors": [
+    {
+      "componentType": 5125,
+      "count": 672,
+      "max": [
+        223
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 224,
+      "max": [
+        1.0078506474401436,
+        1.007843137254902,
+        1.007850528230854
+      ],
+      "min": [
+        -1.0078356270696602,
+        -1.007843137254902,
+        -1.0078357462789498
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 224,
+      "max": [
+        25.024425989252563,
+        0.02442598925256334,
+        25.024425989252563
+      ],
+      "min": [
+        -25.024425989252563,
+        -50.02442598925256,
+        -25.024425989252563
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Tyler Waite (https://sketchfab.com/holos-tyler)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/o-27a703835e594721be8c7cb2fa7b1240",
+      "title": "O"
+    },
+    "generator": "Sketchfab-5.81.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 622
+    }
+  ],
+  "buffers": [
+    {
+      "name": "O-draco",
+      "byteLength": 624,
+      "uri": "data:application/octet-stream;base64,RFJBQ08CAgEBAAAAcOABAd8BEQLdAQgB0wEDOX+fNUtZW4pqH0VpqWo9RVlbimofSllblOpalGqpeh5F6VqKekppeUp5Hkp5HkXpnlLoU0W1qFShAAEBEKspqNVOUWPDRJMFVQKas8BNrVeMgbRnzwK9a4YQGtXg6nugzW+19l75aIEC/wAAAAEAAQAJAwABAgEBCQMAAAMBAQEADAMlCZQlAZQDSQZJAiUNJQFxE0kKJ2nZvw60acESIGrSdfhARFt3vAwm6yZZfAijYTNR24TpF4grOl9UbhAMwC4RAAQg0XggAPRgAQBrHwBM5h+AUwcEgEMOACYBAObzB4DtBADK/AVoqoAAaEgCACUaHBgdAOR+AALLDoDSxAHgkhSmcQEgtw0YbxmA4pMCYHYbMKaCEccBQPoiwAsaAgAEogCMAaC/eQAAggcAggMHAARVHQAArA1ABZgEUHAqAP0ZAWIaCpiCHACiBwL4gFIAyJ6CEeQCQG4Y4IbiAHA5CpPoACAXA8AIAwLAITEAjMihPwC8GACAHhAEwMArAIBtBQBJ/QNoyoAAWMgJIKIDUJwPACHZAUSqOABb+gAQjgAFcgEYFw4Qg0sAEp8A0jgAQlcEkGFIAAroFAD5KwLIPEBtAWABzAMADFwAAGAbgPwpARKaCiD/hgCggIiAHgdA6IIAPZMGMPaWACQuCNBDASTGBWDcxAHYkgQoKgEcAgAAAAD/BwAAAADIwQAASMIAAMjBAABIQgsGAwEBAgIlON0HICH2eRQ7PCaWDfoDiQ2d7MK8VNs0UD1nFJqZKMbY2Qhf/wAAAH8AAAD/AiRXCAAA"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "color_13324106",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5972017883637631,
+          0.0781874218051863,
+          0.06847816984440014,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.8
+      },
+      "alphaMode": "OPAQUE"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 2
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "NORMAL": 0,
+                "POSITION": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.7071067811865475,
+        0,
+        0,
+        0.7071067811865476
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "O.obj.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": ""
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ]
+}

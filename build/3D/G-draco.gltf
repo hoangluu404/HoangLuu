@@ -1,0 +1,170 @@
+{
+  "accessors": [
+    {
+      "componentType": 5125,
+      "count": 1380,
+      "max": [
+        463
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 464,
+      "max": [
+        1.0078451638128243,
+        1.007843137254902,
+        1.0078504090215645
+      ],
+      "min": [
+        -1.0078411106969796,
+        -1.007843137254902,
+        -1.0078358654882393
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 464,
+      "max": [
+        25.024425989252563,
+        0.02442598925256334,
+        25.024425989252563
+      ],
+      "min": [
+        -25.024425989252563,
+        -50.02442598925256,
+        -25.024425989252563
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Tyler Waite (https://sketchfab.com/holos-tyler)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/g-2de74f12ff634ae19b3f1caf44448336",
+      "title": "G"
+    },
+    "generator": "Sketchfab-5.81.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 1175
+    }
+  ],
+  "buffers": [
+    {
+      "name": "G-draco",
+      "byteLength": 1176,
+      "uri": "data:application/octet-stream;base64,RFJBQ08CAgEBAAAA6AHMAwHLAxcAc9/WbtvTqlZpaamWdt36FLQAAKxbW1BUt3YtFFT7UMraPhTK2j0PFMrarf0aUKjSVt+nlHVdn0KBqqr6ujWq0HqglOehlLVrHyiUbl1bUKiuex4UlOehlLVrUaiuW1soqG59HiiUbu2+pVCg+q5RKJYChQIBARCqUjQO7mEpgn3398U5Tq7JShkC75Wb3vjIH2dpyFPVM2ym2fRz5JLMacujV/7ptvAGooJAemAOR5v0BN6jFbOY+l6MgHjFJ9PLbNTOdKfT8e2stYAC/wAAAAEAAQAJAwABAgEBCQMAAAMBAQEADANJCAMdAQkDjM0F5QbxAd0DNQpZFlKbi8puWK9OC8oaeL5l0retpF0So403f6DzyTVmnLD0N6lvI5MCSpTpGNQoVSYp54jCuquVmnDQ//K2p5+oshdTmTNcHiGD9cwez6843UmO4LpqMQjAlmEAegP8DcEcAAC68QPwGdMA6FMGcAkT0PEQAGARIgC6Pgj6qAHaKBSAg6ADALwyYQDI5MwAkMepAaCJaQOQeeAAfF85ACvPANsxQPOFAyJAMx/AtCwAP7UBqJ1BAKLmEQAziQCCfwTAPcoIgNUsBAxOcF7eVwCYp4GzeYCOAIEcGaEuAJjTwHnChD4AgEggIOIWAHgRPACwIaAEAACCBwA2dAsAvBgEIGwBAEG+FAAF4IEALIleAFjyjQAoQGoDAAA4AgCStwCAIIUABGYCAD4KAYhbAECQEvkWAHgxPACwYZQAAEAdAPErAMzrABglAAAwPACwofN1AcD8aACQvhwAdlGAXl8ASJcHAFgUoC8HgN2jAUAapfA/AFLWEADi6SIA4CIBAHFIAPBDAgB2EQBwcRJIAODikQBYKwCgr6QAzltJAOwAANA/EgBvNAAA4BhIANTiABBijwCIyQEg1JAuAqAtNQTAd/4H4MkP4JcXoNf1AXj0A/j/AXiyhgD4DoLhcgDWPRqAo9cFIPMZUPEoAO3PgLouAJlb8JMAMMDxAGCGbQHAF39A2ocADjkTAOzxB6S2AOCL4wHADBXfAgCBZCsAHpkHANArgEryAACVzAMAcATAI98oAAPAFgAI5BBwgEwAsMcQBVwA0EXxAKCGUgJAAHOgA1aA5iEFoP0c6KQEgABWMLsAZI40AEdrDsC6KTDDfQAeTYFZcwDWRRqAoxcMAgRAlGwIgPB4EQBviQCCQCQA9hEBBL0IgLdUgiABUIsCYApLAmAHAATIRwUAbGhJASjIgADgkgpgNCEAFEVFALBpgQASRCQA3KNGAGiIhwDAEQHAqCwAdgDAAsACAIEOZwG4XwwA+2gAtGsDoNUTAMLfAgQFAgj2BICwNgBaowHQlhAwxhQgfQuAAAAAAP8HAAAAAMjBAABIwgAAyMEAAEhCCwYDAQED/wFRN0kINP///+s0SrTz18HlxV9TwWFhOkkH3T/9Poj48KFepEhQD0Lo5h951cSqhUz4fW32gHG4+XwIC2p0k1ZeBbeSkua2K82/K9CKur3YweXFu9GE/wAAAH8AAAD/A+xUgAgA"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "color_12955475",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5583403896342679,
+          0.4286904966139066,
+          0.08650046203654976,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.8
+      },
+      "alphaMode": "OPAQUE"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 2
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "NORMAL": 0,
+                "POSITION": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.7071067811865475,
+        0,
+        0,
+        0.7071067811865476
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "G.obj.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": ""
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ]
+}

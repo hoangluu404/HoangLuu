@@ -1,0 +1,170 @@
+{
+  "accessors": [
+    {
+      "componentType": 5125,
+      "count": 504,
+      "max": [
+        171
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 172,
+      "max": [
+        1.007844448557087,
+        1.007843137254902,
+        1.0078706149961434
+      ],
+      "min": [
+        -1.0078418259527169,
+        -1.007843137254902,
+        -1.0078156595136605
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 172,
+      "max": [
+        25.0424344314851,
+        0.017999649047851562,
+        25.024434782437247
+      ],
+      "min": [
+        -25.024434782437247,
+        -50.02443478243725,
+        -25.0424344314851
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Tyler Waite (https://sketchfab.com/holos-tyler)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/n-950978dc26cd4297b1916cbfb7111a14",
+      "title": "N"
+    },
+    "generator": "Sketchfab-5.81.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 511
+    }
+  ],
+  "buffers": [
+    {
+      "name": "N-draco",
+      "byteLength": 512,
+      "uri": "data:application/octet-stream;base64,RFJBQ08CAgEBAAAAVqgBAacBCQAqf7X6lFJNtajC83VdF0pBtcD6lELrXbd2XYoC3q8rW/pUVZWibKkCtBQAAQEQqR984WKAWwquCbhpaElq0t/AfVfoMM3/2QRiuLGltDZaAv8AAAABAAEACQMAAQIBAQkDAAADAQEBAAwDbQoLwDUF8Qj1BT0CfQEFHRts6XX/QFdm8K8QT6kXBcRrBQyUMTJbQPsVTURVwCUKsEACTKEB56sBkMJ0AADTQWUCTgAmAAKiGwkAgwMAlDoRAAtAaUBp0ACQejwCYNaVARW5BICyEaBnAM4IAl7ZwQurBAC8+QiAgkOKAJi5NACQdeUBoOtEAEDPKWAuwABWLoIApJwCZiIAoOfKA0DX/zuAyyMIAAC6CAaQcgAgKE4AFDwIBOB2CABAbEICIAJYAwCsHT8A0LscAND3HAEg7k4CQNi9BACmN8APJwHAnEsAgHkD/F4CANOdBICw5wgAcZcDAPoGMICxaUAp0AA4pQ/gK0IAmAOKAICIHQHwbk0CoONgJAAKDQAAXQYATQY3ERAuJWAAAMAABDIAYQAAAAD/BwAAAADIwQAASMLdJMjBbhJIQgsGAwEBA/8BjTi1BmD////rYBzq3W1sNQzU50HdSKXgn4T6urSMmABNnmpKQUWA/wAAAH8AAAD/AtdPCAA="
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "color_13324106",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5972017883637631,
+          0.0781874218051863,
+          0.06847816984440014,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.8
+      },
+      "alphaMode": "OPAQUE"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 2
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "NORMAL": 0,
+                "POSITION": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.7071067811865475,
+        0,
+        0,
+        0.7071067811865476
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "N.obj.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": ""
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ]
+}
