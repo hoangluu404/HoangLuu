@@ -117,11 +117,11 @@ span.header-left {
   width: 200px;
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   a.bottom-left {
     display: none;
   }
-}
+} */
 
 @media only screen and (max-width: 1000px) {
   h1 {

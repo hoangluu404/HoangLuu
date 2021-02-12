@@ -54,10 +54,25 @@ const usePlayerControls = () => {
   return movement
 }
 
+
+
 const Spaceship = ({position}) => {
 
+  const [mobile, setMobile] = useState(0)
   const [active, setActive] = useState(false)
   const activeRef = useRef(active)
+  const [pressed, setPressed] = useState(false)
+
+
+  const handleDown = () => {
+    setPressed(true)
+    setMobile(false)
+  }
+  
+  const handleUp = () => {
+    setMobile( (Math.floor(Math.random() * Math.floor(2)))==1?1:-1 )
+  }
+
   activeRef.current = active
 //   const { spring } = useSpring({
 //     spring: active,
@@ -102,7 +117,7 @@ const Spaceship = ({position}) => {
 
     const direction = new Vector3()
 
-    setAngle(angle+0.025*(Number(moveLeft)-Number(moveRight)))
+    setAngle(angle+0.025*(Number(moveLeft)-Number(moveRight)-Number(mobile)))
     if(angle<-360 || angle>360)
       setAngle(0)
 
@@ -113,17 +128,17 @@ const Spaceship = ({position}) => {
     // set Directional Vectors
     const frontVector = new Vector3(
       // x
-      moveZ*(-Number(moveForward)-Number(moveRight)-Number(moveLeft)),
+      moveZ*(-Number(moveForward)-Number(moveRight)-Number(moveLeft)-Number(pressed)),
       
       // y
-      ref.current.position.y < 5? 
+      ref.current.position.y < 7? 
         -5*Number(moveBackward)
         +2*Number(moveForward)
-        // +Number(jump)
+        +0.001*Number(pressed)
         :0.001*Number(moveForward),
 
       //z
-      moveX*(-Number(moveForward)-Number(moveRight)-Number(moveLeft)))
+      moveX*(-Number(moveForward)-Number(moveRight)-Number(moveLeft)-Number(pressed)))
     const sideVector = new Vector3(0,0,0) // currently not in use
 
     // combine vectors
@@ -144,18 +159,20 @@ const Spaceship = ({position}) => {
   return (
     <>
     
-    <group   position={position} scale={[0.1, 0.1, 0.1]}
+    <group  onPointerDown={()=>handleDown()} onPointerOut={()=>handleUp()} position={position} scale={[0.1, 0.1, 0.1]}
       ref={ref}
       >
       <group >
         <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_03_Default_0.geometry} material-color='#252525' />
         <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_02_Default_0.geometry} material-color={color} />
-        <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_Material25_0.geometry} material-color='white' />
+        <mesh castShadow receiveShadow  rotation={[0,0,0]} geometry={nodes.Box002_Material25_0.geometry} material-color='white' />
         <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_Material26_0.geometry} material-color={color} />
         <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_01_Default_0.geometry} material-color='#add8e6' />
         <mesh castShadow receiveShadow rotation={[0,0,0]} geometry={nodes.Box002_08_Default_0.geometry} material-color='grey' />
       </group>
     </group>
+
+
     </>
   )
 }

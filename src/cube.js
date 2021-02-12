@@ -38,10 +38,11 @@ const Cube = ({ position }, props) => {
   return (
 
     <mesh ref={ref}
-    onClick={()=>{
-        if(!active)
-            api.velocity.set(100*(Math.random()-0.5),100*Math.random(),100*(Math.random()-0.5))
-        }} 
+      castShadow receiveShadow
+      onClick={()=>{
+          if(!active)
+              api.velocity.set(100*(Math.random()-0.5),100*Math.random(),100*(Math.random()-0.5))
+          }} 
       position={position}
     >
       <boxBufferGeometry attach="geometry" args={[1, 1, 1]}/>
